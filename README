@@ -1,16 +1,22 @@
 OffView
 =======
 
-OffView is a simple tool for viewing OFF files in 3D with OpenGL.
+OffView is a simple tool for viewing OFF files with OpenGL.
 It's based on the Qt library and is written in C++.
 
-The authors are Markus Haecker, Manuel Caputo, Daniel Fritz and Benjamin Stauder
+The OFF file format is a simple format to store 3D objects as polygon meshes.
+OffView uses Qt for the GUI and OpenGL as 3D API to draw the objects.
 
-The project website can be found at: http://code.google.com/p/offview/
+This software was originally written by a group of four students in the context
+of a graded software project at the University of Applied Sciences in Constance. 
+
+The project was located at http://code.google.com/p/offview/, but since Google
+Code will be turned off, this project was moved to GitHub at
+https://github.com/cry-inc/offview.
 
 
-How to build OffView from source
-================================
+How to build OffView from source code
+=====================================
 
 Windows:
 
@@ -84,10 +90,20 @@ img  (Folder)  Icons and other in OffView included images
 lang (Folder)  The translation files
 src  (Folder)  The C++ source code
 Doxyfile       Doxygen "makefile" with the Doxygen settings
-license.txt    A copy of the GPL version 3
+LICENSE        A copy of the GPL version 3
 offview.pro    The Qt project file
 offview.qrc    Qt resource file to embed images and translations
 offview.rc     Windows specific resource file for the Windows application icons
+README         This file
+
+
+Contributors
+============
+
+* Manuel Caputo
+* Markus Haecker
+* Daniel Fritz
+* Benjamin Stauder
 
 
 Thanks
