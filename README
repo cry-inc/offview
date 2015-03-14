@@ -20,32 +20,30 @@ How to build OffView from source code
 
 Windows:
 
-  - Install the Qt Creator with version 4.6 or greater
-  - Open the OffView project file (offview.pro)
-  - Set the build configuration to 'Release'
-  - Build it
-  - The binary should be now in your OffView/release folder
+  1. Install the latest Qt Community Edition with MingGW from http://www.qt.io/
+  2. Open the OffView project file (offview.pro) in the Qt Creator
+  3. Set the build configuration to 'Release'
+  4. Build it
+  5. The compiled binary should now be located in your release folder
   
-  If you plan to use OffView on other Windows machines do not forget to provide
-  the necessary Qt DLL files! Those are mingwm10.dll, QtCore4.dll, QtGui4.dll
-  and QtOpenGL4.dll located in your Qt/qt/bin/ folder.
+  If you plan to deplay OffView, do not forget to include the necessary Qt
+  and MinGW DLLs! See the Qt Wiki for more information on deploying: 
+  http://wiki.qt.io/Deploying-Windows-Applications
   
-  If you do not want to distribute the QT DLLs with OffView you have to link
-  OffView statically! The required step are describe here:
-  http://qt.nokia.com/doc/deployment-windows.html#static-linking
-  
-  This still requires the compiler specific DLLs, for example mingwm10.dll,
-  if you use MingW for compiling. For more information see here:
-  http://qt.nokia.com/doc/deployment-windows.html#application-dependencies
+  Currently you need the following DLLs when compiling with Qt 5.4:
+  * icudt53.dll, icuin53.dll, icuuc53.dll (Unicode support)
+  * libgcc_s_dw2-1.dll, libstdc++-6.dll, libwinpthread-1.dll (MinGW)
+  * Qt5Core.dll, Qt5Gui.dll, Qt5Widgets.dll, Qt5OpenGL.dll (Qt Modules)
+
 
 Linux:
-	
-  - Install Qt >= 4.6
-  - Open a terminal window
-  - cd /directory/with/offview-source
-  - Type 'qmake -config release'
-  - Type 'make'
-  - You should now see a binary called "offview" in the current folder
+
+  1. Install Qt >= 4.6 (5.4 recommended)
+  2. Open a new terminal window
+  3. cd /directory/with/offview-source
+  4. Type 'qmake -config release'
+  5. Type 'make'
+  6. You should now have a binary called "offview" in the current folder
 
 Mac OS X:
 
