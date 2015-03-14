@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="en_US">
+<TS version="2.1" language="en_US">
 <context>
     <name>ColoredMode</name>
     <message>
@@ -101,11 +101,11 @@
     </message>
     <message>
         <location filename="../src/MainWindow.cpp" line="576"/>
-        <source>&lt;h3&gt;About OffView version %1&lt;/h3&gt;&lt;p&gt;This program is for viewing Object File Format (.off) files in 3D with OpenGL.&lt;/p&gt;&lt;p&gt;Object File Format files are used to represent the geometry of a model by specifying the polygons of the model&apos;s surface. The polygons can have any number of vertices.&lt;/p&gt;&lt;p&gt;OffView is written by four students of software engineering at Konstanz University of Applied Sciences, Germany:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Manuel Caputo,&lt;/li&gt;&lt;li&gt;Markus Haecker,&lt;/li&gt;&lt;li&gt;Daniel Fritz and&lt;/li&gt;&lt;li&gt;Benjamin Stauder.&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;The project is hosted on Google Code and can be found under &lt;a href=&quot;http://code.google.com/p/offview/&quot;&gt;http://code.google.com/p/offview&lt;/a&gt;. It&apos;s free software under the conditions of version 3 of the GNU General Public License (&lt;a href=&quot;http://www.gnu.org/licenses/gpl-3.0.html&quot;&gt;GPLv3&lt;/a&gt;). &lt;/p&gt;</source>
+        <source>&lt;h3&gt;About OffView version %1&lt;/h3&gt;&lt;p&gt;This program is for viewing Object File Format (.off) files with OpenGL.&lt;/p&gt;&lt;p&gt;Object File Format files are used to represent the geometry of a model by specifying the polygons of the model&apos;s surface. The polygons can have any number of vertices.&lt;/p&gt;&lt;p&gt;OffView was written by four students of Software Engineering at the University of Applied Sciences in Constance:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Manuel Caputo,&lt;/li&gt;&lt;li&gt;Markus Haecker,&lt;/li&gt;&lt;li&gt;Daniel Fritz and&lt;/li&gt;&lt;li&gt;Benjamin Stauder.&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;The project is hosted on GitHub and can be found under &lt;a href=&quot;https://github.com/cry-inc/offview&quot;&gt;https://github.com/cry-inc/offview&lt;/a&gt;. It&apos;s free software under the conditions of version 3 of the GNU General Public License (&lt;a href=&quot;http://www.gnu.org/licenses/gpl-3.0.html&quot;&gt;GPLv3&lt;/a&gt;). &lt;/p&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/MainWindow.cpp" line="596"/>
+        <location filename="../src/MainWindow.cpp" line="595"/>
         <source>About OffView</source>
         <translation type="unfinished"></translation>
     </message>
@@ -271,82 +271,82 @@
 <context>
     <name>OffScene</name>
     <message>
-        <location filename="../src/OffScene.cpp" line="76"/>
+        <location filename="../src/OffScene.cpp" line="86"/>
         <source>Unexpected end of file!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/OffScene.cpp" line="166"/>
+        <location filename="../src/OffScene.cpp" line="176"/>
         <source>Invalid color value!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/OffScene.cpp" line="197"/>
+        <location filename="../src/OffScene.cpp" line="207"/>
         <source>Can&apos;t find all three vertex components!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/OffScene.cpp" line="206"/>
+        <location filename="../src/OffScene.cpp" line="216"/>
         <source>Can&apos;t parse vertex data!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/OffScene.cpp" line="236"/>
+        <location filename="../src/OffScene.cpp" line="246"/>
         <source>A polygon line has less than 4 components!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/OffScene.cpp" line="242"/>
+        <location filename="../src/OffScene.cpp" line="252"/>
         <source>A polygon references less than 3 vertices!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/OffScene.cpp" line="249"/>
+        <location filename="../src/OffScene.cpp" line="259"/>
         <source>Can&apos;t parse polygon data!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/OffScene.cpp" line="301"/>
+        <location filename="../src/OffScene.cpp" line="311"/>
         <source>Unable to open file </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/OffScene.cpp" line="307"/>
+        <location filename="../src/OffScene.cpp" line="317"/>
         <source>Wrong file format!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/OffScene.cpp" line="314"/>
+        <location filename="../src/OffScene.cpp" line="324"/>
         <source>Can&apos;t read vertex, polygon and edge numbers!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/OffScene.cpp" line="321"/>
+        <location filename="../src/OffScene.cpp" line="331"/>
         <source>Invalid vertex or polygon number!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/OffScene.cpp" line="329"/>
+        <location filename="../src/OffScene.cpp" line="339"/>
         <source>Loading vertices...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/OffScene.cpp" line="329"/>
+        <location filename="../src/OffScene.cpp" line="339"/>
         <source>Cancel</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/OffScene.cpp" line="330"/>
+        <location filename="../src/OffScene.cpp" line="340"/>
         <source>Loading OFF file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/OffScene.cpp" line="347"/>
+        <location filename="../src/OffScene.cpp" line="357"/>
         <source>Loading polygons...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/OffScene.cpp" line="395"/>
+        <location filename="../src/OffScene.cpp" line="405"/>
         <source>Aborted file loading!</source>
         <translation type="unfinished"></translation>
     </message>
