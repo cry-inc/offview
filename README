@@ -26,7 +26,7 @@ Windows:
   4. Build it
   5. The compiled binary should now be located in your release folder
   
-  If you plan to deplay OffView, do not forget to include the necessary Qt
+  If you plan to deploy OffView, do not forget to include the necessary Qt
   and MinGW DLLs! See the Qt Wiki for more information on deploying: 
   http://wiki.qt.io/Deploying-Windows-Applications
   
