@@ -17,7 +17,6 @@ QString WireframeMode::name()
 void WireframeMode::setSettings()
 {
 	glEnable(GL_DEPTH_TEST);
-	glEnable(GL_LINE_SMOOTH);
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
@@ -26,7 +25,6 @@ void WireframeMode::setSettings()
 void WireframeMode::unsetSettings()
 {
 	glDisable(GL_DEPTH_TEST);
-	glDisable(GL_LINE_SMOOTH);
 	glDisable(GL_BLEND);
 }
 

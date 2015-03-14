@@ -23,6 +23,9 @@
  */
 GlWidget::GlWidget(QWidget *parent): QGLWidget(parent)
 {
+	// Enable SuperSampling for all view modes
+	QGLWidget::setFormat(QGLFormat(QGL::SampleBuffers));
+
 	scene = 0;
 	activeMode = 0;
 
