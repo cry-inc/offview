@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindowClass</class>
+ <widget class="QMainWindow" name="MainWindowClass">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>400</width>
+    <height>300</height>
+   </size>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="../offview.qrc">
+    <normaloff>:/img/offview.png</normaloff>:/img/offview.png</iconset>
+  </property>
+  <widget class="QWidget" name="centralwidget"/>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>27</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>&amp;File</string>
+    </property>
+    <addaction name="actionOpen_File"/>
+    <addaction name="actionClose_File"/>
+    <addaction name="separator"/>
+    <addaction name="actionExit"/>
+   </widget>
+   <widget class="QMenu" name="menuView">
+    <property name="title">
+     <string>&amp;View</string>
+    </property>
+    <widget class="QMenu" name="menuShow_Planes">
+     <property name="title">
+      <string>Show &amp;Planes</string>
+     </property>
+     <addaction name="actionXz_Plane"/>
+     <addaction name="actionXy_Plane"/>
+     <addaction name="actionYz_Plane"/>
+    </widget>
+    <widget class="QMenu" name="menuMode">
+     <property name="title">
+      <string>&amp;Mode</string>
+     </property>
+    </widget>
+    <addaction name="actionChoose_Background_Color"/>
+    <addaction name="actionChoose_Object_Color"/>
+    <addaction name="separator"/>
+    <addaction name="menuMode"/>
+    <addaction name="separator"/>
+    <addaction name="menuShow_Planes"/>
+    <addaction name="actionShow_Coordinate_System"/>
+    <addaction name="separator"/>
+    <addaction name="actionReset_View"/>
+   </widget>
+   <widget class="QMenu" name="menuLanguage">
+    <property name="title">
+     <string>&amp;Language</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuHelp">
+    <property name="title">
+     <string>&amp;Help</string>
+    </property>
+    <addaction name="actionHelp_Content"/>
+    <addaction name="separator"/>
+    <addaction name="actionAbout_OffView"/>
+    <addaction name="actionAbout_Qt"/>
+   </widget>
+   <addaction name="menuFile"/>
+   <addaction name="menuView"/>
+   <addaction name="menuLanguage"/>
+   <addaction name="menuHelp"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionOpen_File">
+   <property name="text">
+    <string>&amp;Open File</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+O</string>
+   </property>
+   <property name="iconVisibleInMenu">
+    <bool>true</bool>
+   </property>
+  </action>
+  <action name="actionClose_File">
+   <property name="text">
+    <string>&amp;Close File</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+W</string>
+   </property>
+   <property name="iconVisibleInMenu">
+    <bool>true</bool>
+   </property>
+  </action>
+  <action name="actionExit">
+   <property name="icon">
+    <iconset resource="../offview.qrc">
+     <normaloff>:/img/menu/cross.png</normaloff>:/img/menu/cross.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Exit</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Q</string>
+   </property>
+   <property name="iconVisibleInMenu">
+    <bool>true</bool>
+   </property>
+  </action>
+  <action name="actionChoose_Background_Color">
+   <property name="text">
+    <string>Choose &amp;Background Color</string>
+   </property>
+   <property name="shortcut">
+    <string>F3</string>
+   </property>
+  </action>
+  <action name="actionChoose_Object_Color">
+   <property name="text">
+    <string>Choose &amp;Object Color</string>
+   </property>
+   <property name="shortcut">
+    <string>F4</string>
+   </property>
+  </action>
+  <action name="actionShow_Coordinate_System">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Show &amp;Coordinate System</string>
+   </property>
+   <property name="shortcut">
+    <string>F2</string>
+   </property>
+  </action>
+  <action name="actionReset_View">
+   <property name="text">
+    <string>&amp;Reset View</string>
+   </property>
+   <property name="shortcut">
+    <string>Esc</string>
+   </property>
+  </action>
+  <action name="actionHelp_Content">
+   <property name="icon">
+    <iconset resource="../offview.qrc">
+     <normaloff>:/img/menu/help.png</normaloff>:/img/menu/help.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Help Contents</string>
+   </property>
+   <property name="shortcut">
+    <string>F1</string>
+   </property>
+   <property name="iconVisibleInMenu">
+    <bool>true</bool>
+   </property>
+  </action>
+  <action name="actionAbout_OffView">
+   <property name="text">
+    <string>About &amp;OffView</string>
+   </property>
+   <property name="iconVisibleInMenu">
+    <bool>true</bool>
+   </property>
+  </action>
+  <action name="actionAbout_Qt">
+   <property name="text">
+    <string>About &amp;Qt</string>
+   </property>
+   <property name="iconVisibleInMenu">
+    <bool>true</bool>
+   </property>
+  </action>
+  <action name="actionXz_Plane">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>&amp;xz Plane</string>
+   </property>
+   <property name="shortcut">
+    <string>F5</string>
+   </property>
+  </action>
+  <action name="actionXy_Plane">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>x&amp;y Plane</string>
+   </property>
+   <property name="shortcut">
+    <string>F6</string>
+   </property>
+  </action>
+  <action name="actionYz_Plane">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>y&amp;z Plane</string>
+   </property>
+   <property name="shortcut">
+    <string>F7</string>
+   </property>
+  </action>
+ </widget>
+ <resources>
+  <include location="../offview.qrc"/>
+ </resources>
+ <connections/>
+</ui>

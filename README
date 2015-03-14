@@ -1,0 +1,97 @@
+OffView
+=======
+
+OffView is a simple tool for viewing OFF files in 3D with OpenGL.
+It's based on the Qt library and is written in C++.
+
+The authors are Markus Haecker, Manuel Caputo, Daniel Fritz and Benjamin Stauder
+
+The project website can be found at: http://code.google.com/p/offview/
+
+
+How to build OffView from source
+================================
+
+Windows:
+
+  - Install the Qt Creator with version 4.6 or greater
+  - Open the OffView project file (offview.pro)
+  - Set the build configuration to 'Release'
+  - Build it
+  - The binary should be now in your OffView/release folder
+  
+  If you plan to use OffView on other Windows machines do not forget to provide
+  the necessary Qt DLL files! Those are mingwm10.dll, QtCore4.dll, QtGui4.dll
+  and QtOpenGL4.dll located in your Qt/qt/bin/ folder.
+  
+  If you do not want to distribute the QT DLLs with OffView you have to link
+  OffView statically! The required step are describe here:
+  http://qt.nokia.com/doc/deployment-windows.html#static-linking
+  
+  This still requires the compiler specific DLLs, for example mingwm10.dll,
+  if you use MingW for compiling. For more information see here:
+  http://qt.nokia.com/doc/deployment-windows.html#application-dependencies
+
+Linux:
+	
+  - Install Qt >= 4.6
+  - Open a terminal window
+  - cd /directory/with/offview-source
+  - Type 'qmake -config release'
+  - Type 'make'
+  - You should now see a binary called "offview" in the current folder
+
+Mac OS X:
+
+  Volunteers required :)
+
+  
+How to update the translation files
+===================================
+
+1. Open a terminal an change the directory to the OffView source folder
+2. Run 'lupdate offview.pro' to extract and update all strings
+3. Edit the translation files (lang/offview_*.ts) with Qt Linguist
+4. Run 'lrelease offview.pro' to build the compressed translation files
+5. Rebuild OffView. That's necessary because the translations are embedded
+   in the OffView binary!
+
+
+How to add a new translation
+============================
+
+1. Add the new translation to the file offview.pro. See the TRANSLATIONS variable.
+   Example: 'TRANSLATIONS += lang/offview_<xy>.ts'
+2. Open a terminal an change the directory to the OffView source folder
+3. Run 'lupdate offview.pro' to create the new translation file
+4. Copy a language icon with the size of 16 x 11 pixels into img/menu/
+5. Add the icon to the resource file offview.qrc
+6. Translate the translation file (lang/offview_<xy>.ts) with Qt Linguist.
+   There are two items which must be translated, all other items are optional:
+   MainWindow::LanguageMenuItem (Should contain the native name of the language)
+   MainWindow::LanguageMenuIcon (Should contain the name of the language icon file)
+7. Run 'lrelease offview.pro' to build the compressed translation file
+8. Add the file lang/offview_<xy>.qm to the resource file offview.qrc
+9. Rebuild OffView. That's necessary because the translations and icons are embedded
+   in the OffView binary!
+
+
+Files
+=====
+
+doc  (Folder)  The code documentation and the end user help files
+img  (Folder)  Icons and other in OffView included images
+lang (Folder)  The translation files
+src  (Folder)  The C++ source code
+Doxyfile       Doxygen "makefile" with the Doxygen settings
+license.txt    A copy of the GPL version 3
+offview.pro    The Qt project file
+offview.qrc    Qt resource file to embed images and translations
+offview.rc     Windows specific resource file for the Windows application icons
+
+
+Thanks
+======
+
+The menu icons are taken from the Silk icon set, located at
+http://www.famfamfam.com/lab/icons/silk. Many thanks to the author!

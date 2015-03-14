@@ -1,0 +1,13 @@
+<RCC>
+    <qresource prefix="/">
+        <file>img/offview.png</file>
+        <file>img/offview.svg</file>
+        <file>img/menu/cross.png</file>
+        <file>img/menu/qt-logo.png</file>
+        <file>img/menu/help.png</file>
+        <file>img/menu/english.png</file>
+        <file>img/menu/german.png</file>
+        <file>lang/offview_de.qm</file>
+        <file>lang/offview_en.qm</file>
+    </qresource>
+</RCC>

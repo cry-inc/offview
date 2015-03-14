@@ -1,0 +1,205 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<title>OffView-Help</title>
+	</head>
+	<body>
+		<h1>OffView-Help</h1>
+		<img src="images/en_offview.png" alt="OffView" />
+		<h2>Content</h2>
+		<ul>
+			<li><a href = "help_de.html#about">About OffView</a></li>
+			<li><a href = "help_de.html#menus">Menu Description</a></li>
+			<li><a href = "help_de.html#controls">Controls</a></li>
+			<li><a href = "help_de.html#win">Additional Information for Windows Users</a></li>
+		</ul>
+
+		<a name = "about"><h2>About OffView</h2></a>
+		<p>
+			This program is for viewing Object File Format (.off) files in 3D with OpenGL.
+			Object File Format files are used to represent the geometry of a model
+			by specifying the polygons of the model's surface. The polygons can have
+			any number of vertices. OffView is written by four students of software
+			engineering at Konstanz University of Applied Sciences, Germany:
+		</p>
+		<ul>
+			<li>Manuel Caputo,</li>
+			<li>Markus Häcker,</li>
+			<li>Daniel Fritz and</li>
+			<li>Benjamin Stauder.</li>
+		</ul>
+		<p>
+			The project is hosted on Google Code and can be found under
+			<a href = "http://code.google.com/p/offview">http://code.google.com/p/offview </a>.
+			It's free software under the conditions of version 3 of the GNU General Public License
+			(<a href=\"http://www.gnu.org/licenses/gpl-3.0.html\">GPLv3</a>).
+		</p>
+
+		<a name = "menus"><h2>Menu Description</h2></a>
+		<p>Here a explanation of every menu item of the programm:</p>
+		<ul>
+			<li>
+				<h3>File</h3>
+				<img src="images/en_file.png" alt="File Menu" /><br /><br />
+				<ul>
+					<li>
+						<b>File open:</b><br />
+						Open a file in the .off-format and show the saved 3D-graphics in the  drawing window.
+					</li>
+					<li>
+						<b>File close:</b><br />
+						Close the opened file and delete the 3D-graphics out of the drawing window.
+					</li>
+					<li>
+						<b>Exit:</b><br />
+						Exit the whole programm.
+					</li>
+				</ul>
+			</li>
+			<li>
+				<h3>View:</h3>
+				<img src="images/en_view.png" alt="View Menu" /><br /><br />
+				<ul>
+					<li>
+						<b>Choose Background Color:</b><br />
+						Choose user-defined background color for the drawing window.
+						You can either pick from a clutch of given colours or you can
+						create an optional colour shade at will.
+					</li>
+					<li>
+						<a name = "chooseColour"><b>Choose Object color:</b></a><br />
+						Choose user-defined 3D-object colour. You can either pick from a 
+						clutch of given colours or you can create an optional colour shade at will.
+					</li>
+					<li>
+						<b>Mode</b><br />
+						<p>You can pick from one of the following viewmodes:</p>
+						<ul>
+							<li><i>Wireframe Mode</i>
+							<p>All edges of the 3D object will be displayed. In this mode
+							there are no colours available; not even the original colours of the object. 
+							In this mode, all edges are evened.
+							Quod vide: <a href = "help_en.html#coloured">coloured Mode.</a></li></a></p>
+							<img src="images/mode_wireframe.png" alt="Wireframe Mode" /><br /><br /></li>
+							
+							<li><i>Dot Mode</i>
+							<p>All vertices of the 3D object will be displayed. In this mode there are no 
+							colours available; not even the original colors of the object. 
+							Quod vide: <a href = "help_en.html#coloured">coloured Mode.</a></p>
+							<img src="images/mode_dots.png" alt="Dot Mode" /><br /><br /></li>
+							
+							<li><i>Flat Shading Mode</i>
+							<p>All faces of the 3D object are shown flat shaded.
+							In this mode, the original colours of the object cannot be seen.
+							Nevertheless, you can attribute a colour to the object.
+							Quod vide: <a href = "help_de.html#coloured">coloured mode.</a></p>
+							<img src="images/mode_flat.png" alt="Flat Shading Mode" /><br /><br /></li>
+							
+							<li><i>Smooth Shading Mode</i>
+							<p>All faces of the 3D object are shown smooth shaded.
+							In this mode, the original colours of the object cannot be seen.
+							Nevertheless, you can attribute a colour to the object.
+							Quod vide: <a href = "help_de.html#coloured">coloured mode.</a></p></p>
+							<img src="images/mode_smooth.png" alt="Smooth Shading Mode" /><br /><br /></li>
+							
+							<li><a name = "coloured"><i>Coloured Mode</i></a>
+							<p>All faces of the 3D object will be displayed. The object will displayed
+							coloured. If there are no colours noted/saved, you can use 
+							<a href = "help_en.html#chooseColour">Choose Object Color</a>
+							to define a colour of your choice for the object.</p>
+							<img src="images/mode_colored.png" alt="Colored Mode" /><br /><br /></li>
+						</ul>
+					</li>
+					<li>
+						<b>Show Planes</b><br />
+						You can optionally display one or more coordinate planes of the coordinate system
+						of the 3D object. For more Information: Quod vide
+						<a href = "help_en.html#showAxes">Show Coordinate System</a><br/>
+					</li>
+					<li>
+						<a name = "showAxes"><b>Show coordinate system</b></a><br />
+						You can optional display the coordinate axis of the coordinate system
+						of the 3D-object, with the activation or deactivation of this menu item.
+						The colours of the axis are define the following way:
+						X-axis: red; Y-axis: green; Z-axis: blue.
+					</li>
+					<li>
+						<b>Reset View</b><br />
+						Here, you can reset the view. All repositionings, rotations and 
+						scalings will be removed.
+					</li>
+				</ul>
+			</li>
+			<li>
+				<h3>Language</h3>
+				<img src="images/en_lang.png" alt="Language Menu" /><br /><br />
+				Here you can change the language of the user interface.
+			</li>
+			<li>
+				<h3>Help</h3>
+				<img src="images/en_help.png" alt="Help Menu" /><br /><br />
+				<ul>
+					<li>
+						<b>Help Contents</b><br />
+						This file.
+					</li>
+					<li>
+						<b>About OffView</b><br />
+						A small dialogue box with informations about OffView.
+						Additionally, it contains version number, licence and 
+						information about the authors of the programm.
+					</li>
+					<li>
+						<b>About Qt</b><br />
+						Information about the Qt toolkit.
+					</li>
+				</ul>
+			</li>
+		</ul>
+
+		<a name = "controls"><h2>Controls</h2></a>
+		<p>
+			The purpose of this programm is to display 3D graphics. For the correct handling
+			of the programm, you should take a short look at the controls:
+		</p>
+		<ul>
+			<li>
+				<h3>Rotate:</h3>
+				Normally, the 3D object will be rotatd around his x- and y-axis
+				(see <a href = "help_de.html#showAxes">here</a> for the determined denotation of the axis).
+				To do this, hold the <i>left</i> mouse button pressed and drag.
+				In addition, you have the possibility to rotate the object around a single axis.
+				Therefore you need additional control keys:
+				If you hold the x-key in addition to the left mouse button, the object will
+				rotate only around the X-axis. Analogue, the same apllies to the Y- and Z-axis.
+			</li>
+			<li>
+				<h3>Move:</h3>
+				A 3D-object can be moved inside the drawing window. To do that, use the
+				<i>right</i> mouse button. The controls are analogue to Rotate:
+				Without pressing a key you move it along <i>its</i> X- and Y-axis,
+				pressing the X-key, you can move it only along its X-axis and so on... 				
+			</li>
+			<li>
+				<h3>Zoom:</h3>
+				Use the mouse wheel to zoom in and out.
+			</li>
+		</ul>
+
+		<a name = "win"><h2>Additional Information for Windows Users</h2></a>
+		<p>
+			To use the OffView as default program to display 3D objects in the .off-format,
+			follow this steps:
+			<ul>
+				<li>Open a folder where at least one file in .off-format is placed.</li>
+				<li>Right click on one of the .off-format files and choose the item "Open with..."
+				(respectively "Open with..."->Choose default programm)</li>
+				<li>Choose the programm "OffView" from the list. If it isn't on the list,
+				click "Browse" and search the programm "OffView". (If not already happened,
+				check the checkbox "Always use the selected programm to open this kind of file")</li>
+				<li>Comfirm with "OK".</li>
+			</ul>
+		</p>
+
+	</body>
+</html>

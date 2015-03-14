@@ -1,0 +1,213 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<title>OffView-Hilfe</title>
+	</head>
+	<body>
+		<h1>OffView-Hilfe</h1>
+		<img src="images/de_offview.png" alt="OffView" />
+		<h2>Inhalt</h2>
+		<ul>
+			<li><a href = "help_de.html#about">Über OffView</a></li>
+			<li><a href = "help_de.html#menus">Menü-Beschreibung</a></li>
+			<li><a href = "help_de.html#controls">Steuerung</a></li>
+			<li><a href = "help_de.html#win">Informationen für Windows-Benutzer</a></li>
+		</ul>
+
+		<a name = "about"><h2>Über OffView</h2></a>
+		<p>
+			OffView ist ein Betrachter für Object File Format (.off) Dateien in 3D
+			mit OpenGL. Object File Format Dateien repräsentieren die Geometrie eines
+			Modells durch dessen Oberfläche, die sich aus beliebig komplexen Polygonen
+			zusammensetzen kann. OffView wird von vier Software Engineering Studenten
+			der Hochschule Konstanz Technik, Wirtschaft und Gestaltung entwickelt:
+		</p>
+		<ul>
+			<li>Manuel Caputo,</li>
+			<li>Markus Häcker,</li>
+			<li>Daniel Fritz und</li>
+			<li>Benjamin Stauder.</li>
+		</ul>
+		<p>
+			Das Projekt ist auf Google Code gehostet und kann unter
+			<a href = "http://code.google.com/p/offview">http://code.google.com/p/offview </a>
+			gefunden werden. Das Programm ist freie Software und unterliegt den Bedingungen
+			der Version 3 der GNU General Public License (GPLv3). 
+		</p>
+
+		<a name = "menus"><h2>Menü-Beschreibung</h2></a>
+		<p>Hier eine Erklärung aller Menü-Punkte des Programmes:</p>
+		<ul>
+			<li>
+				<h3>Datei</h3>
+				<img src="images/de_file.png" alt="Datei-Menü" /><br /><br />
+				<ul>
+					<li>
+						<b>Datei öffnen</b><br />
+						Öffnet eine Datei im off-Format und zeigt das gespeicherte
+						3D-Modell im Zeichenfenster an.
+					</li>
+					<li>
+						<b>Datei schließen</b><br />
+						Schließt die geöffnete Datei und löscht die Grafik aus dem
+						Zeichenfenster.
+					</li>
+					<li>
+						<b>Beenden</b><br />
+						Beendet das gesamte Programm.
+					</li>
+				</ul>
+			</li>
+			<li>
+				<h3>Ansicht</h3>
+				<img src="images/de_view.png" alt="Ansicht-Menü" /><br /><br />
+				<ul>
+					<li>
+						<b>Hintergrundfarbe</b><br />
+						Wählen Sie eine beliebige Hintergrundfarbe für das Zeichenfenster.
+						Sie können entweder aus einer Reihe vorgegebener Farben wählen
+						oder einen beliebigen Farbton erstellen.
+					</li>
+					<li>
+						<a name = "chooseColour"><b>Objektfarbe</b></a><br />
+						Wählen Sie eine beliebige Farbe für das 3D-Objekt. Sie können entweder
+						aus einer Reihe vorgegebener Farben wählen oder einen beliebigen Farbton erstellen.
+					</li>
+					<li>
+						<b>Modus</b><br />
+						Sie können das 3D-Objekt in einem der folgenden Modi anzeigen lassen:<br /><br />
+						<ul>
+							<li><i>Drahtgitter</i>
+							<p>Es werden alle Kanten des 3D-Objekts angezeigt. In diesem Modus
+							sind keine Farben verfügbar; auch die ursprünglichen Farben des Objekts sind
+							nicht zu sehen. Bei diesem Modus sind alle Kanten geglättet (Antialiasing).
+							Siehe auch: <a href = "help_de.html#coloured">farbiger Modus.</a></p>
+							<img src="images/mode_wireframe.png" alt="Drahtgittermodus" /><br /><br /></li>
+							
+							<li><i>Punkte</i>
+							<p>Es werden alle Knoten des 3D-Objekts angezeigt. In diesem Modus sind
+							keine Farben verfügbar; auch die ursprünglichen Farben des Objekts 
+							sind nicht zu sehen.
+							Siehe auch: <a href = "help_de.html#coloured">farbiger Modus</a>.</p>
+							<img src="images/mode_dots.png" alt="Punktemodus" /><br /><br /></li>
+							
+							<li><i>Hart schattiert</i>
+							<p>Es werden alle Flächen des 3D-Objekts hart schattiert angezeigt.
+							In diesem Modus sind die ursprünglichen Farben des Objekts nicht zu sehen.
+							Nichtsdestotrotz kann dem Objekt eine Farbe zugewiesen werden.
+							Siehe auch: <a href = "help_de.html#coloured">farbiger Modus.</a></p>
+							<img src="images/mode_flat.png" alt="Hart schattierter Modus" /><br /><br /></li>
+							
+							<li><i>Weich schattiert</i>
+							<p>Es werden alle Flächen des 3D-Objekts weich schattiert angezeigt.
+							In diesem Modus sind die ursprünglichen Farben des Objekts nicht zu sehen.
+							Nichtsdestotrotz kann dem Objekt eine Farbe zugewiesen werden.
+							Siehe auch: <a href = "help_de.html#coloured">farbiger Modus.</a></p>
+							<img src="images/mode_smooth.png" alt="Weich schattierter Modus" /><br /><br /></li>
+							
+							<li><a name = "coloured"><i>Farbig</i></a>
+							<p>Es werden alle Flächen des 3D-Objekts angezeigt. Das Objekt wird
+							farbig dargestellt. Sind keine Farben vermerkt/(ab-)gespeichert,
+							können Sie mit <a href = "help_de.html#chooseColour">Objekt-Farbe auswählen</a>
+							die Farbe des Objekts beliebig bestimmen.</p>
+							<img src="images/mode_colored.png" alt="Farbiger Modus" /><br /><br /></li>
+						</ul>
+					</li>
+					<li>
+						<b>Zeige Ebene</b><br />
+						Sie können sich optional eine oder mehrere Koordinatenebenen vom
+						Koordinatensystem des 3D-Objekts anzeigen lassen. Für weitere Informationen:
+						siehe auch <a href = "help_de.html#showAxes">Koordinatenachsen anzeigen</a>
+					</li>
+					<li>
+						<a name = "showAxes"><b>Koordinatensystem zeigen</b></a><br />
+						Sie können sich optional die Koordinatenachsen vom Koordinatensystem
+						des 3D-Objekts anzeigen lassen, indem Sie diesen Menüpunkt aktivieren
+						bzw. deaktivieren. Die Farben der Achsen sind folgendermaßen festgelegt:
+						x-Achse: rot; y-Achse: grün; z-Achse: blau.
+					</li>
+					<li>
+						<b>Ansicht zurücksetzen</b><br />
+						Hier wird die Ansicht zurückgesetzt. Alle Verschiebungen, Rotationen
+						und Skalierungen werden entfernt.
+					</li>
+				</ul>
+			</li>
+			<li>
+				<h3>Sprache</h3>
+				<img src="images/de_lang.png" alt="Sprache-Menü" /><br /><br />
+				Hier kann die Sprache der Programmoberfläche geändert werden.
+			</li>
+			<li>
+				<h3>Hilfe</h3>
+				<img src="images/de_help.png" alt="Hilfe-Menü" /><br /><br />
+				<ul>
+					<li>
+						<b>Inhalt</b><br />
+						Diese Datei.
+					</li>
+					<li>
+						<b>Über OffView</b><br />
+						Eine kleine Dialogbox mit Informationen über OffView.
+						Enthält unter anderen die Versionsummer, die Lizenz sowie die Autoren des Programmes.
+					</li>
+					<li>
+						<b>Über Qt</b><br />
+						Informationen über das Qt-Toolkit.
+					</li>
+				</ul>
+			</li>
+		</ul>
+
+		<a name = "controls"><h2>Steuerung</h2></a>
+		<p>
+			Der Zweck dieses Programmes ist es, 3D-Modelle zu betrachten. Um das Programm
+			korrekt bedienen zu können, sollten Sie sich mit der
+			Steuerung auseinandersetzen:
+		</p>
+		<ul>
+			<li>
+				<h3>Rotieren:</h3>
+				Normalerweise wird das 3D-Objekt um seine x- und y-Achse gedreht
+				(festgelegte Bezeichnung der Achsen - siehe <a href = "help_de.html#showAxes">hier</a>).
+				Dazu halten Sie die <i>linke</i> Maustaste gedrückt und ziehen. Zusätzlich haben
+				Sie die Möglichkeit, das Objekt um einzelne Achsen zu drehen. Dafür
+				benötigen Sie zusätzliche Steuer-Tasten:
+				Halten Sie zusätzlich zur linken Maustaste die X-Taste gedrückt, dreht
+				sich das Objekt nur um die x-Achse. Gleiches gilt ananlog für Y- und Z-Achse.
+			</li>
+			<li>
+				<h3>Verschieben:</h3>
+				Ein 3D-Objekt kann auf der Zeichenfläche verschoben werden. Dazu wird die
+				<i>rechte</i> Maustaste verwendet. Ansonsten ist die Steuerung analog zum Rotieren:
+				wird keine Taste auf der Tastatur gedrückt, wird das Objekt in Richtung
+				<i>seiner</i> x- und y-Achse verschoben, mit zusätzlich gedrückter x-Taste nur in
+				Richtung seiner x-Achse, usw.
+			</li>
+			<li>
+				<h3>Zoomen:</h3>
+				Durch Drehen am Mausrad können Sie das Objekt vergrößern oder verkleinern.
+			</li>
+		</ul>
+
+		<a name = "win"><h2>Informationen für Windows-Benutzer</h2></a>
+		<p>
+			Um "OffView" als Standardprogramm zum Betrachten von 3D-Objekten im off-Format
+			zu nutzen, führen Sie folgende Schritte durch:
+			<ul>
+				<li>Öffnen Sie einen Ordner, in dem mindestens eine Datei mit der Dateieindung
+				.off liegt</li>
+				<li>Rechtsklicken Sie auf eine dieser Dateien und wählen Sie dann den Eintrag
+				"Öffnen mit..." (bzw. "Öffnen mit..."->Standardprogramm auswählen...)</li>
+				<li>Wählen Sie das Programm "Offview" aus der Liste. Ist es dort nicht
+				verzeichnet, klicken Sie auf "Durchsuchen" und suchen Sie dann das Programm
+				"OffView". (Falls noch nicht geschehen, setzen Sie den Haken bei
+				"Dateityp immer mit diesem Programm öffnen")</li>
+				<li>Bestätigen Sie mit "OK".</li>
+			</ul>
+		</p>
+		
+		<br />
+
+	</body>
+</html>
