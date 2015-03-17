@@ -65,8 +65,6 @@ protected:
 	void mousePressEvent(QMouseEvent *event);
 	void mouseMoveEvent(QMouseEvent *event);
 	void wheelEvent(QWheelEvent *event);
-	void keyPressEvent(QKeyEvent *event);
-	void keyReleaseEvent(QKeyEvent *event);
 
 private:
 	void drawAxes();
@@ -148,75 +146,30 @@ private:
 	bool showPlanes[3]; // xz, xy, zy
 
 	/**
-	 * @brief	Value for the next glScalef.
+	 * @brief	Value for scaling the model.
 	 */
 	float scale;
 
 	/**
-	 * @brief	Value for the next glTranslatef in direction of the x-axis.
+	 * @brief	Value for moving the model along the x-axis of the screen.
 	 */
 	float xTrans;
 
 	/**
-	 * @brief	Value for the next glTranslatef in direction of the y-axis.
+	 * @brief	Value for moving the model along the y-axis of the screen.
 	 */
 	float yTrans;
 
 	/**
-	 * @brief	Value for the next glTranslatef in direction of the z-axis.
-	 */
-	float zTrans;
-
-	/**
-	 * @brief	Value for the next glRotate on the x axis.
+	 * @brief	Value for rotating the model around the vertical axis of the screen.
 	 */
 	float xRot;
 	
 	/**
-	 * @brief	Value for the next glRotate on the y axis.
+	 * @brief	Value for rotating the model around the horizontal axis of the screen.
 	 */
 	float yRot;
-	
-	/**
-	 * @brief	Value for the next glRotate on the z axis.
-	 */
-	float zRot;
 
-	/**
-	 * @brief	Is the key 'x' pressed down?
-	 */
-	bool xDown;
-	
-	/**
-	 * @brief	Is the key 'y' pressed down?
-	 */
-	bool yDown;
-	
-	/**
-	 * @brief	Is the key 'z' pressed down?
-	 */
-	bool zDown;
-
-	/**
-	 * @brief	Do we have to reset the whole view?
-	 */
-	bool isBeingReset;
-
-	/**
-	 * @brief	Do we have to call glScalef at the next update(paintGL)?
-	 */
-	bool mustScale;
-
-	/**
-	 * @brief	Do we have to call glTranslate at the next update(paintGL)?
-	 */
-	bool mustTranslate;
-	
-	/**
-	 * @brief	Do we have to call glRotate at the next update(paintGL)?
-	 */
-	bool mustRotate;
-	
 	/**
 	 * @brief	The offset values which are needed to center our model
 	 * @see		calculateOffsetAndScale()

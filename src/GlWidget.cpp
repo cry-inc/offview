@@ -110,27 +110,13 @@ void GlWidget::paintGL()
 	);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-	if (isBeingReset) {
-		glLoadIdentity();
-		isBeingReset = false;
-	}
+	glMatrixMode(GL_MODELVIEW);
+	glLoadIdentity();
 
-	if (mustScale) {
-		glScalef(scale, scale, scale);
-		mustScale = false;
-	}
-	
-	if (mustTranslate) {
-		glTranslatef(xTrans, yTrans, zTrans);
-		mustTranslate = false;
-	}
-	
-	if (mustRotate) {
-		glRotatef(xRot, 1.0, 0.0, 0.0);
-		glRotatef(yRot, 0.0, 1.0, 0.0);
-		glRotatef(zRot, 0.0, 0.0, 1.0);
-		mustRotate = false;
-	}
+	glScalef(scale, scale, scale);
+	glTranslatef(xTrans, yTrans, 0.0);
+	glRotatef(xRot, 1.0, 0.0, 0.0);
+	glRotatef(yRot, 0.0, 1.0, 0.0);
 	
 	if (showAxes) {
 		drawAxes();
@@ -192,35 +178,13 @@ void GlWidget::mouseMoveEvent(QMouseEvent *event)
 	int dy = event->y() - lastPos.y();
 
 	if (event->buttons() & Qt::LeftButton) {
-		// Left mouse button is pressed: Rotate
-		xRot = 0.0; yRot = 0.0; zRot = 0.0;
-		mustRotate = true;
-		if (xDown) {
-			xRot = static_cast<float>(dy)/2.0;
-		} else if (yDown) {
-			yRot = static_cast<float>(dx)/2.0;
-		} else if (zDown) {
-			zRot = static_cast<float>(dy)/2.0;
-		} else {
-			// If no key is pressed, we rotate around x and y
-			xRot = static_cast<float>(dy)/2.0;
-			yRot = static_cast<float>(dx)/2.0;
-		}		
+		// Left mouse button is pressed: Rotate around x and y
+		xRot += static_cast<float>(dy)/2.0;
+		yRot += static_cast<float>(dx)/2.0;
 	} else if (event->buttons() & Qt::RightButton) {
-		// Right mouse button is pressed: Translate
-		xTrans = 0.0; yTrans = 0.0; zTrans = 0.0;
-		mustTranslate = true;
-		if (xDown) {
-			xTrans = (static_cast<double>(dx)/200.0);
-		} else if (yDown) {
-			yTrans = -(static_cast<double>(dy)/200.0);
-		} else if (zDown) {
-			zTrans = (static_cast<double>(dy)/200.0);
-		} else {
-			// If no key is pressed, we translate x and y
-			xTrans = (static_cast<double>(dx)/200.0);
-			yTrans = -(static_cast<double>(dy)/200.0);
-		}
+		// Right mouse button is pressed: Translate x and y
+		xTrans += (static_cast<double>(dx)/200.0);
+		yTrans += -(static_cast<double>(dy)/200.0);
 	}
 
 	// Remember the last position
@@ -239,72 +203,14 @@ void GlWidget::mouseMoveEvent(QMouseEvent *event)
  */
 void GlWidget::wheelEvent(QWheelEvent *event)
 {	
-	if (event->delta() > 0) {
-		scale = 1.1;
-	} else {
-		scale = 0.9;
+	if (event->delta() > 0 && scale < 20) {
+		scale += 0.1 * scale;
+	} else if (event->delta() < 0 && scale > 0.1) {
+		scale -= 0.1 * scale;
 	}
-
-	// note that we have to call 'glScalef' in 'paintGL'
-	mustScale = true;
 
 	// call update to paint the changes we made here
 	updateGL();
-}
-
-/**
- * @brief	Processes keystrokes
- *
- * As the axe we are spinning around depends on the key pressed,
- * we have to note them down.
- *
- * @param	event Event that occured
- */
-void GlWidget::keyPressEvent(QKeyEvent *event)
-{
-	switch(event->key()) {
-		case Qt::Key_Y :
-			yDown = true;
-			break;
-		case Qt::Key_X :
-			xDown = true;
-			break;
-		case Qt::Key_Z :
-			zDown = true;
-			break;
-		default :
-			QGLWidget::keyPressEvent(event);
-	}
-}
-
-/**
- * @brief	Processes key-releases
- *
- * We also have to note when keys are released!
- *
- * @param	event Event that occured
- */
-void GlWidget::keyReleaseEvent(QKeyEvent *event)
-{
-	switch(event->key()) {
-		case Qt::Key_Y :
-			if(!event->isAutoRepeat()) {
-				yDown = false;
-			}
-			break;
-		case Qt::Key_X :
-			if(!event->isAutoRepeat()) {
-				xDown = false;
-			}
-			break;
-		case Qt::Key_Z :
-			if(!event->isAutoRepeat()) {
-				zDown = false;
-			}
-			break;
-		default :
-			QGLWidget::keyReleaseEvent(event);
-	}
 }
 
 /**
@@ -573,17 +479,6 @@ bool GlWidget::axes()
  */
 void GlWidget::resetView()
 {
-	// Set these values so that the object is correctly redrawn
-	isBeingReset = true;
-
-	xDown = false;
-	yDown = false;
-	zDown = false;
-
-	mustScale = false;
-	mustTranslate = false;
-	mustRotate = false;
-
 	showAxes = true;
 
 	showPlanes[0] = true;
@@ -595,10 +490,10 @@ void GlWidget::resetView()
 	bgColor = QColor("black");
 	gridColor = QColor(100, 100, 100);
 
-	// Reset scale, rotate and translate values
+	// Reset scale, rotation and translation values
 	scale = 1.0;
-	xRot = 0.0; yRot = 0.0; zRot = 0.0;
-	xTrans = 0.0; yTrans = 0.0; zTrans = 0.0;
+	xRot = 0.0; yRot = 0.0;
+	xTrans = 0.0; yTrans = 0.0;
 	
 	updateGL();
 }
