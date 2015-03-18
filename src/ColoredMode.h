@@ -23,7 +23,7 @@ class ColoredMode : public ShadedMode
 public:
 
 	ColoredMode();
-	QString name();
+	QString name() const override;
 
 };
 

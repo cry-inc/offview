@@ -372,7 +372,7 @@ void MainWindow::retranslateUi()
  *
  * @return	True, if the MIME data contained a valid file path, false otherwise.
  */
-bool MainWindow::checkDragAndDropData(const QMimeData* mimeData, QString* filePath)
+bool MainWindow::checkDragAndDropData(const QMimeData* mimeData, QString* filePath) const
 {
 	if (!mimeData->hasUrls()) {
 		return false;
@@ -483,11 +483,7 @@ void MainWindow::exit()
 void MainWindow::setBackgroundColor()
 {
 	QColor color = glWidget->backgroundColor();
-	#if QT_VERSION >= 0x040500
-		color = QColorDialog::getColor(color, this, tr("Choose background color"));
-	#else
-		color = QColorDialog::getColor(color, this);
-	#endif
+	color = QColorDialog::getColor(color, this, tr("Choose background color"));
 	if (color.isValid()) {
 		glWidget->setBackgroundColor(color);
 	}
@@ -502,11 +498,7 @@ void MainWindow::setBackgroundColor()
 void MainWindow::setObjectColor()
 {
 	QColor color = glWidget->objectColor();
-	#if QT_VERSION >= 0x040500
-		color = QColorDialog::getColor(color, this, tr("Choose object color"));
-	#else
-		color = QColorDialog::getColor(color, this);
-	#endif
+	color = QColorDialog::getColor(color, this, tr("Choose object color"));
 	if (color.isValid()) {
 		glWidget->setObjectColor(color);
 	}

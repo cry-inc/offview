@@ -29,11 +29,11 @@ public:
 	OffScene(const QString & fileName);
 	~OffScene();
 	
-	bool isColored() const;
-	int polygonsCount() const;
-	const CPolygon* polygon(int i) const;
-	int verticesCount() const;
-	const CVertex* vertex(int i) const;
+	bool isColored() const override;
+	int polygonsCount() const override;
+	const CPolygon* polygon(int i) const override;
+	int verticesCount() const override;
+	const CVertex* vertex(int i) const override;
 
 private slots:
 	void cancel();

@@ -27,8 +27,8 @@ public:
 	~MainWindow();
 
 protected:
-	void dragEnterEvent(QDragEnterEvent* event);
-	void dropEvent(QDropEvent* event);
+	void dragEnterEvent(QDragEnterEvent* event) override;
+	void dropEvent(QDropEvent* event) override;
 
 private:
 	/**
@@ -110,7 +110,7 @@ private:
 	void setMainWindowTitle(const QString & filename = "");
 	void loadNativeLanguageFile();
 	void retranslateUi();
-	bool checkDragAndDropData(const QMimeData* mimeData, QString* filePath = 0);
+	bool checkDragAndDropData(const QMimeData* mimeData, QString* filePath = 0) const;
 
 signals:
 	void triggered(int actionLanguageIndex);

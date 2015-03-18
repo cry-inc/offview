@@ -24,7 +24,7 @@ class FlatShadedMode : public ShadedMode
 public:
 
 	FlatShadedMode();
-	QString name();
+	QString name() const override;
 
 };
 

@@ -24,9 +24,9 @@ class ShadedMode : public IRenderMode
 public:
 
 	ShadedMode(bool smoothShaded, bool colored, bool specular);
-	void setSettings();
-	void unsetSettings();
-	void draw(const IScene *scene, const QColor *color);
+	void setSettings() override;
+	void unsetSettings() override;
+	void draw(const IScene *scene, const QColor *color) override;
 	
 private:
 

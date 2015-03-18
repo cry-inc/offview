@@ -22,10 +22,10 @@ class WireframeMode : public IRenderMode
 
 public:
 
-	QString name();
-	void setSettings();
-	void unsetSettings();
-	void draw(const IScene *scene, const QColor *defaultColor);
+	QString name() const override;
+	void setSettings() override;
+	void unsetSettings() override;
+	void draw(const IScene *scene, const QColor *defaultColor) override;
 };
 
 #endif

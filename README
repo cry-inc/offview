@@ -38,7 +38,7 @@ Windows:
 
 Linux:
 
-  1. Install Qt >= 4.6 (5.4 recommended)
+  1. Install Qt (5.4 recommended)
   2. Open a new terminal window
   3. cd /directory/with/offview-source
   4. Type 'qmake -config release'

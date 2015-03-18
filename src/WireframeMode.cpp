@@ -9,7 +9,7 @@
 #include <QtOpenGL>
 #include "WireframeMode.h"
 
-QString WireframeMode::name()
+QString WireframeMode::name() const
 {
 	return tr("Wireframe Mode");
 }

@@ -1,8 +1,14 @@
 # qmake file for OffView
-# created 2010-02-23 by M. Caputo
+
+contains(QT_VERSION, ^4\\.[0-9]\\..*) {
+	message("Cannot build OffView with Qt version $${QT_VERSION}.")
+	error("Use at least Qt 5.0")
+}
 
 QT += opengl
 
+CONFIG += c++11
+CONFIG += warn_on
 CONFIG += qt
 
 FORMS += src/MainWindow.ui

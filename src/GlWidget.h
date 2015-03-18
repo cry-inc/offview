@@ -59,12 +59,12 @@ public:
 	void resetView();
 	
 protected:
-	void initializeGL();
-	void resizeGL(int w, int h);
-	void paintGL();
-	void mousePressEvent(QMouseEvent *event);
-	void mouseMoveEvent(QMouseEvent *event);
-	void wheelEvent(QWheelEvent *event);
+	void initializeGL() override;
+	void resizeGL(int w, int h) override;
+	void paintGL() override;
+	void mousePressEvent(QMouseEvent *event) override;
+	void mouseMoveEvent(QMouseEvent *event) override;
+	void wheelEvent(QWheelEvent *event) override;
 
 private:
 	void drawAxes();

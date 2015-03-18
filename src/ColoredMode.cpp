@@ -18,7 +18,7 @@
 ColoredMode::ColoredMode() : ShadedMode(true, true, true)
 {}
 
-QString ColoredMode::name()
+QString ColoredMode::name() const
 {
 	return tr("Colored Mode");
 }

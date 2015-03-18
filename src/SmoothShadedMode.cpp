@@ -18,7 +18,7 @@
 SmoothShadedMode::SmoothShadedMode() : ShadedMode(true, false, true)
 {}
 
-QString SmoothShadedMode::name()
+QString SmoothShadedMode::name() const
 {
 	return tr("Smooth Shaded Mode");
 }

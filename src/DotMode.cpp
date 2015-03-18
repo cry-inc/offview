@@ -9,7 +9,7 @@
 #include <QtOpenGL>
 #include "DotMode.h"
 
-QString DotMode::name()
+QString DotMode::name() const
 {
 	return tr("Dot Mode");
 }

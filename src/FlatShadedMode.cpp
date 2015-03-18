@@ -18,7 +18,7 @@
 FlatShadedMode::FlatShadedMode() : ShadedMode(false, false, true)
 {}
 
-QString FlatShadedMode::name()
+QString FlatShadedMode::name() const
 {
 	return tr("Flat Shaded Mode");
 }

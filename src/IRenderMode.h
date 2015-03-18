@@ -28,7 +28,7 @@ public:
 	 *
 	 * @return The name of the render mode
 	 */
-	virtual QString name() = 0;
+	virtual QString name() const = 0;
 	
 	/**
 	 * @brief Render mode startup code

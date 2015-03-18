@@ -24,7 +24,7 @@ class SmoothShadedMode : public ShadedMode
 public:
 
 	SmoothShadedMode();
-	QString name();
+	QString name() const override;
 
 };
 
