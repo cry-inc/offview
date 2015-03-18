@@ -6,6 +6,8 @@
  * @date 2010-05-25
  */
 
+#include <QFileInfo>
+
 #include "MainWindow.h"
 #include "SceneFactory.h"
 
@@ -27,6 +29,9 @@ MainWindow::MainWindow(QString fileToOpen, QWidget* parent)
 
 	ui.setupUi(this);
 	setMainWindowTitle();
+
+	// Enable drag and drop for opening files
+	QMainWindow::setAcceptDrops(true);
 
 	glWidget = new GlWidget(); // QMainWindow takes ownership of the glWidget
 		// pointer and deletes it at the appropriate time
@@ -66,6 +71,33 @@ MainWindow::~MainWindow()
 
 	for (int i = 0; i < actionRenderMode.size(); ++i) {
 		delete actionRenderMode.at(i);
+	}
+}
+
+/**
+ * @brief Processes a drag enter event.
+ *
+ * @param[in,out] event Drag enter event.
+ */
+void MainWindow::dragEnterEvent(QDragEnterEvent* event)
+{
+	QString filePath;
+	if (checkDragAndDropData(event->mimeData())) {
+		event->acceptProposedAction();
+	}
+}
+
+/**
+ * @brief Processes a drop event.
+ *
+ * @param[in,out] event Drop event.
+ */
+void MainWindow::dropEvent(QDropEvent* event)
+{
+	QString filePath;
+	if (checkDragAndDropData(event->mimeData(), &filePath)) {
+		event->acceptProposedAction();
+		parseFileAndShowObject(filePath);
 	}
 }
 
@@ -330,6 +362,36 @@ void MainWindow::retranslateUi()
 {
 	updateRenderModesMenu(); // Translates the render modes in menu "View" -> "Mode"
 	ui.retranslateUi(this); // Translates all the rest
+}
+
+/**
+ * @brief Check drag and drop MIME data for a valid file path.
+ *
+ * @param[in] mimeData MIME data of the drag and drop event.
+ * @param[out] filePath Optional file path output, if the MIME data contained a valid one.
+ *
+ * @return	True, if the MIME data contained a valid file path, false otherwise.
+ */
+bool MainWindow::checkDragAndDropData(const QMimeData* mimeData, QString* filePath)
+{
+	if (!mimeData->hasUrls()) {
+		return false;
+	}
+
+	QList<QUrl> urlList = mimeData->urls();
+	if (urlList.length() != 1) {
+		return false;
+	}
+
+	QFileInfo fileInfo(urlList[0].toLocalFile());
+	if (!fileInfo.exists() || !fileInfo.isFile()) {
+		return false;
+	}
+
+	if (filePath) {
+		*filePath = fileInfo.filePath();
+	}
+	return true;
 }
 
 /**

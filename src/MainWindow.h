@@ -26,6 +26,10 @@ public:
 	MainWindow(QString fileToOpen = QString(), QWidget* parent = 0);
 	~MainWindow();
 
+protected:
+	void dragEnterEvent(QDragEnterEvent* event);
+	void dropEvent(QDropEvent* event);
+
 private:
 	/**
 	 * @brief Grant access to the user interface.
@@ -106,6 +110,7 @@ private:
 	void setMainWindowTitle(const QString & filename = "");
 	void loadNativeLanguageFile();
 	void retranslateUi();
+	bool checkDragAndDropData(const QMimeData* mimeData, QString* filePath = 0);
 
 signals:
 	void triggered(int actionLanguageIndex);
