@@ -1,5 +1,4 @@
-OffView
-=======
+# OffView
 
 OffView is a simple tool for viewing OFF files with OpenGL.
 It's based on the Qt library and is written in C++.
@@ -15,43 +14,42 @@ Code will be turned off, this project was moved to GitHub at
 https://github.com/cry-inc/offview.
 
 
-How to build OffView from source code
-=====================================
+## How to build OffView from source code
 
-Windows:
+### Windows:
 
-  1. Install the latest Qt Community Edition with MingGW from http://www.qt.io/
-  2. Open the OffView project file (offview.pro) in the Qt Creator
-  3. Set the build configuration to 'Release'
-  4. Build it
-  5. The compiled binary should now be located in your release folder
+1. Install the latest Qt Community Edition with MingGW from http://www.qt.io/
+2. Open the OffView project file (offview.pro) in the Qt Creator
+3. Set the build configuration to 'Release'
+4. Build it
+5. The compiled binary should now be located in your release folder
   
-  If you plan to deploy OffView, do not forget to include the necessary Qt
-  and MinGW DLLs! See the Qt Wiki for more information on deploying: 
-  http://wiki.qt.io/Deploying-Windows-Applications
+If you plan to deploy OffView, do not forget to include the necessary Qt
+and MinGW DLLs! See the Qt Wiki for more information on deploying: 
+http://wiki.qt.io/Deploying-Windows-Applications
   
-  Currently you need the following DLLs when compiling with Qt 5.4:
-  * icudt53.dll, icuin53.dll, icuuc53.dll (Unicode support)
-  * libgcc_s_dw2-1.dll, libstdc++-6.dll, libwinpthread-1.dll (MinGW)
-  * Qt5Core.dll, Qt5Gui.dll, Qt5Widgets.dll, Qt5OpenGL.dll (Qt Modules)
+Currently you need the following DLLs when compiling with Qt 5.4:
+
+* icudt53.dll, icuin53.dll, icuuc53.dll (Unicode support)
+* libgcc_s_dw2-1.dll, libstdc++-6.dll, libwinpthread-1.dll (MinGW)
+* Qt5Core.dll, Qt5Gui.dll, Qt5Widgets.dll, Qt5OpenGL.dll (Qt Modules)
 
 
-Linux:
+### Linux:
 
-  1. Install Qt (5.4 recommended)
-  2. Open a new terminal window
-  3. cd /directory/with/offview-source
-  4. Type 'qmake -config release'
-  5. Type 'make'
-  6. You should now have a binary called "offview" in the current folder
+1. Install Qt (5.4 recommended)
+2. Open a new terminal window
+3. cd /directory/with/offview-source
+4. Type 'qmake -config release'
+5. Type 'make'
+6. You should now have a binary called "offview" in the current folder
 
-Mac OS X:
+### Mac OS X:
 
-  Volunteers required :)
+Volunteers required :)
 
-  
-How to update the translation files
-===================================
+
+## How to update the translation files
 
 1. Open a terminal an change the directory to the OffView source folder
 2. Run 'lupdate offview.pro' to extract and update all strings
@@ -61,8 +59,7 @@ How to update the translation files
    in the OffView binary!
 
 
-How to add a new translation
-============================
+## How to add a new translation
 
 1. Add the new translation to the file offview.pro. See the TRANSLATIONS variable.
    Example: 'TRANSLATIONS += lang/offview_<xy>.ts'
@@ -80,23 +77,22 @@ How to add a new translation
    in the OffView binary!
 
 
-Files
-=====
+## Files
 
-doc  (Folder)  The code documentation and the end user help files
-img  (Folder)  Icons and other in OffView included images
-lang (Folder)  The translation files
-src  (Folder)  The C++ source code
-Doxyfile       Doxygen "makefile" with the Doxygen settings
+doc/           The code documentation and the end user help files
+img/           Icons and other in OffView included images
+lang/          The translation files
+src/           The C++ source code
+README.md      This file
 LICENSE        A copy of the GPL version 3
 offview.pro    The Qt project file
 offview.qrc    Qt resource file to embed images and translations
 offview.rc     Windows specific resource file for the Windows application icons
-README         This file
+Doxyfile       Doxygen configuration file
+.travis.yml    Configuration file for the Travis CI service
 
 
-Contributors
-============
+## Contributors
 
 * Manuel Caputo
 * Markus Haecker
@@ -104,8 +100,12 @@ Contributors
 * Benjamin Stauder
 
 
-Thanks
-======
+## Thanks
 
 The menu icons are taken from the Silk icon set, located at
 http://www.famfamfam.com/lab/icons/silk. Many thanks to the author!
+
+
+## Build Status
+
+[![Build Status](https://travis-ci.org/cry-inc/offview.svg?branch=master)](https://travis-ci.org/cry-inc/offview)
