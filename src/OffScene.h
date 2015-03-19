@@ -49,6 +49,7 @@ private:
 	void levelColorValues(double *values, int count);
 	static bool alphaChannelCompare(const CPolygon *p1, const CPolygon *p2);
 	void finalize();
+	void cleanup();
 
 	/**
 	 * @brief Is the OffScene colored?
@@ -69,7 +70,11 @@ private:
 	 * @brief Remembers for each vertex the the connected polygons
 	 */
 	QVector<QVector<CPolygon*> > hintlist;
-	
+
+	/**
+	 * @brief Was the loading process of the file canceled?
+	 */
+	bool canceled;
 };
 
 #endif

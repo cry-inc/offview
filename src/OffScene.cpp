@@ -21,6 +21,7 @@
 OffScene::OffScene(const QString & fileName)
 {
 	colored = false;
+	canceled = false;
 	parseFile(fileName);
 }
 
@@ -31,13 +32,7 @@ OffScene::OffScene(const QString & fileName)
  */
 OffScene::~OffScene()
 {
-	for(int i=0; i<vertices.size(); i++) {
-	 	delete vertices[i];
-	}
-
-	for(int i=0; i<polygons.size(); i++) {
-	 	delete polygons[i];
-	}
+	cleanup();
 }
 
 bool OffScene::isColored() const
@@ -343,7 +338,7 @@ void OffScene::parseFile(const QString & fileName)
 	connect(&progress, SIGNAL(canceled()), this, SLOT(cancel()));
 
 	// Read all vertices into an temporary field
-	for(int i=0; i<vCount; i++) {
+	for(int i=0; i<vCount && !canceled; i++) {
 		line = readNextLine(&stream);
 		tokens = split2Token(&line);
 		vertices.append(readVertex(&tokens));
@@ -355,7 +350,7 @@ void OffScene::parseFile(const QString & fileName)
 
 	// Construct the polygons with the indices for the vertices
 	progress.setLabelText(tr("Loading polygons..."));
-	for(int i=0; i<pCount; i++) {
+	for(int i=0; i<pCount && !canceled; i++) {
 		line = readNextLine(&stream);
 		tokens = split2Token(&line);
 		polygons.append(readPolygon(&tokens, vertices));
@@ -365,7 +360,12 @@ void OffScene::parseFile(const QString & fileName)
 	}
 	
 	file.close();
-	finalize();
+	if (canceled) {
+		cleanup();
+		throw tr("Aborted file loading!");
+	} else {
+		finalize();
+	}
 	progress.setValue(vCount+pCount);
 }
 
@@ -397,12 +397,11 @@ bool OffScene::alphaChannelCompare(const CPolygon *p1, const CPolygon *p2)
  * @brief Cancels the loading process with an exception
  *
  * If the user clicks on the cancel button during a file loading
- * process, this method is called and will raise an exception
- * to stop the file loading.
+ * process, this method is called and will cancel the loading process.
  */
 void OffScene::cancel()
 {
-	throw tr("Aborted file loading!");
+	canceled = true;
 }
 
 /**
@@ -437,4 +436,23 @@ void OffScene::finalize()
 		x /= count; y /= count; z /= count;
 		vertices[i]->setNormalVector(x, y, z);
 	}
+}
+
+/**
+ * @brief Deletes all vertices and polygons
+ *
+ * Used in the destructor and error cases to clean
+ * up after the loading/parsing of the file was aborted.
+ */
+void OffScene::cleanup()
+{
+	for(int i=0; i<polygons.size(); i++) {
+		delete polygons[i];
+	}
+	polygons.clear();
+
+	for(int i=0; i<vertices.size(); i++) {
+		delete vertices[i];
+	}
+	vertices.clear();
 }
