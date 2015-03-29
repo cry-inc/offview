@@ -9,4 +9,4 @@ install:
 
 build_script:
   - qmake -config release
-  - make
+  - mingw32-make
