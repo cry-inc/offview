@@ -1,0 +1,12 @@
+os: MinGW
+
+environment:
+  QTDIR: C:\Qt\5.4\mingw491_32
+  MINGW: C:\Qt\Tools\mingw491_32
+
+install:
+  - set PATH=%PATH%;%QTDIR%\bin;%MINGW%\bin;C:\Qt\Tools\QtCreator\bin
+
+build_script:
+  - qmake -config release
+  - make
