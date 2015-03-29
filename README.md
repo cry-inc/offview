@@ -79,17 +79,18 @@ Volunteers required :)
 
 ## Files
 
-doc/           The code documentation and the end user help files
-img/           Icons and other in OffView included images
-lang/          The translation files
-src/           The C++ source code
-README.md      This file
-LICENSE        A copy of the GPL version 3
-offview.pro    The Qt project file
-offview.qrc    Qt resource file to embed images and translations
-offview.rc     Windows specific resource file for the Windows application icons
-Doxyfile       Doxygen configuration file
-.travis.yml    Configuration file for the Travis CI service
+	doc/           The code documentation and the end user help files
+	img/           Icons and other in OffView included images
+	lang/          The translation files
+	src/           The C++ source code
+	README.md      This file
+	LICENSE        A copy of the GPL version 3
+	offview.pro    The Qt project file
+	offview.qrc    Qt resource file to embed images and translations
+	offview.rc     Windows specific resource file for the Windows application icons
+	Doxyfile       Doxygen configuration file
+	.travis.yml    Configuration file for the Travis CI service
+	appveyor.yml   Configuration file for the Appveyor CI service
 
 
 ## Contributors
@@ -108,4 +109,5 @@ http://www.famfamfam.com/lab/icons/silk. Many thanks to the author!
 
 ## Build Status
 
-[![Build Status](https://travis-ci.org/cry-inc/offview.svg?branch=master)](https://travis-ci.org/cry-inc/offview)
+Linux Builds (Travis CI): [![Linux Build Status](https://travis-ci.org/cry-inc/offview.svg?branch=master)](https://travis-ci.org/cry-inc/offview)
+Windows Builds (Appveyor CI): [![Windows Build status](https://ci.appveyor.com/api/projects/status/2ccqhy09nvedc93w/branch/master?svg=true)](https://ci.appveyor.com/project/cry-inc/offview)
