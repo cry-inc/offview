@@ -11,6 +11,9 @@ CONFIG += c++11
 CONFIG += warn_on
 CONFIG += qt
 
+msvc:LIBS += opengl32.lib
+mingw:LIBS += -lopengl32
+
 FORMS += src/MainWindow.ui
 
 SOURCES += src/main.cpp \
