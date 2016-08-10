@@ -123,7 +123,7 @@ void GlWidget::paintGL()
 	}
 	
 	int lines = 5;
-	float stepSize = 0.2;
+	float stepSize = 0.2f;
 	
 	if (showPlanes[0]) {
 		drawXzPlane(lines, stepSize, gridColor);
