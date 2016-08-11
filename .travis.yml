@@ -15,10 +15,9 @@ addons:
       - libqt5opengl5-dev
 
 script:
-  - g++ -v
   - qmake -config debug
   - make clean
-  - make -j2
+  - make CC=gcc-6 CXX=g++-6 LD=gcc-6 LDX=g++-6 -j2
   - qmake -config release
   - make clean
-  - make -j2
+  - make CC=gcc-6 CXX=g++-6 LD=gcc-6 LDX=g++-6 -j2
