@@ -1,3 +1,6 @@
+[![Linux Build Status - Travis](https://travis-ci.org/cry-inc/offview.svg?branch=master)](https://travis-ci.org/cry-inc/offview)
+[![Windows Build Status - AppVeyor](https://ci.appveyor.com/api/projects/status/github/cry-inc/offview?branch=master&svg=true)](https://ci.appveyor.com/project/cry-inc/offview)
+
 # OffView
 
 OffView is a simple tool for viewing OFF files with OpenGL.
@@ -105,9 +108,3 @@ Volunteers required :)
 
 The menu icons are taken from the Silk icon set, located at
 http://www.famfamfam.com/lab/icons/silk. Many thanks to the author!
-
-
-## Build Status
-
-Linux Builds (Travis CI): [![Linux Build Status](https://travis-ci.org/cry-inc/offview.svg?branch=master)](https://travis-ci.org/cry-inc/offview)
-Windows Builds (Appveyor CI): [![Windows Build status](https://ci.appveyor.com/api/projects/status/2ccqhy09nvedc93w/branch/master?svg=true)](https://ci.appveyor.com/project/cry-inc/offview)
