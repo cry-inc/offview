@@ -1,12 +1,13 @@
-os: MinGW
-
-environment:
-  QTDIR: C:\Qt\5.4\mingw491_32
-  MINGW: C:\Qt\Tools\mingw491_32
+image: Visual Studio 2015
 
 install:
-  - set PATH=%PATH%;%QTDIR%\bin;%MINGW%\bin;C:\Qt\Tools\QtCreator\bin
-
+  - set QTDIR=C:\Qt\5.7\mingw53_32
+  - set MINGWDIR=C:\mingw-w64\i686-5.3.0-posix-dwarf-rt_v4-rev0
+  - set PATH=%PATH%;%QTDIR%\bin;%MINGWDIR%\bin
 build_script:
+  - qmake -config debug
+  - mingw32-make clean
+  - mingw32-make -j2
   - qmake -config release
-  - mingw32-make
+  - mingw32-make clean
+  - mingw32-make -j2
