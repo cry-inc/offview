@@ -6,10 +6,16 @@ compiler: gcc
 
 addons:
   apt:
+    sources:
+      - ubuntu-toolchain-r-test
     packages:
+      - gcc-6
+      - g++-6
       - qt5-default
+      - libqt5opengl5-dev
 
 script:
+  - g++ -v
   - qmake -config debug
   - make clean
   - make -j2
