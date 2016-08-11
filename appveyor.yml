@@ -4,5 +4,9 @@ install:
   - set PATH=%PATH%;%QTDIR%\bin;%MINGWDIR%\bin
 
 build_script:
-  - qmake offview.pro
+  - qmake -config debug offview.pro
+  - mingw32-make clean
+  - mingw32-make -j2
+  - qmake -config release offview.pro
+  - mingw32-make clean
   - mingw32-make -j2
