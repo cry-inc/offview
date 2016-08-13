@@ -1,5 +1,8 @@
+#pragma once
+
+#include "ShadedMode.h"
+
 /**
- * @class FlatShadedMode
  * @brief Flat shaded render mode
  *
  * This mode displays the object as a solid and flat shaded object.
@@ -11,21 +14,18 @@
  * @author M. Caputo
  * @date 2010-03-26
  */
-
-#ifndef FLATSHADED_MODE_H
-#define FLATSHADED_MODE_H
-
-#include "ShadedMode.h"
-
 class FlatShadedMode : public ShadedMode
 {
 	Q_DECLARE_TR_FUNCTIONS(FlatShadedMode)
 
 public:
-
+	/**
+	 * @brief Constructor
+	 *
+	 * Does nothing but call the base contructor of ShadedMode with the
+	 * right settings. All the work will be done by the base class!
+	 */
 	FlatShadedMode();
+
 	QString name() const override;
-
 };
-
-#endif

@@ -1,11 +1,3 @@
-/**
- * @file DotMode.cpp
- * @see DotMode
- * @see IRenderMode
- * @author M. Caputo
- * @date 2010-03-26
- */
-
 #include <QtOpenGL>
 #include "DotMode.h"
 
