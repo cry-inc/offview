@@ -1,5 +1,8 @@
+#pragma once
+
+#include "ShadedMode.h"
+
 /**
- * @class ColoredMode
  * @brief Colored render mode
  *
  * A render mode for colored scenes. Supports colored vertices
@@ -10,21 +13,18 @@
  * @author M. Caputo
  * @date 2010-04-20
  */
-
-#ifndef COLORED_MODE_H
-#define COLORED_MODE_H
-
-#include "ShadedMode.h"
-
 class ColoredMode : public ShadedMode
 {
 	Q_DECLARE_TR_FUNCTIONS(ColoredMode)
 
 public:
-
+	/**
+	 * @brief Constructor
+	 *
+	 * Does nothing but call the base contructor of ShadedMode with the
+	 * right settings. All the work will be done by the base class!
+	 */
 	ColoredMode();
+
 	QString name() const override;
-
 };
-
-#endif
