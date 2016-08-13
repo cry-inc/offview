@@ -6,6 +6,8 @@
 OffView is a simple tool for viewing OFF files with OpenGL.
 It's based on the Qt library and is written in C++.
 
+![Screenshot](/img/screenshot.png)
+
 The OFF file format is a simple format to store 3D objects as polygon meshes.
 OffView uses Qt for the GUI and OpenGL as 3D API to draw the objects.
 
