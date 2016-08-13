@@ -48,7 +48,7 @@ void WireframeMode::draw(const IScene *scene, const QColor *defaultColor)
 			int cp = scene->polygonsCount();
 			for(int i=0; i<cp; i++) {
 				const CPolygon *poly = scene->polygon(i);
-				int cv = poly->verticesCount();
+				size_t cv = poly->vertexCount();
 				glBegin( GL_LINE_LOOP );
 					for(int j=0; j<cv; j++) {
 						const CVertex *vert = poly->vertex(j);

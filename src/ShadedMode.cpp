@@ -116,10 +116,10 @@ void ShadedMode::createDisplayList(const IScene *scene, const QColor *color)
 		int cp = scene->polygonsCount();
 		for(int i=0; i<cp; i++) {
 			const CPolygon *poly = scene->polygon(i);
-			int cv = poly->verticesCount();
+			size_t cv = poly->vertexCount();
 			const float *nv = 0;
 			if (!smoothShaded) {
-				nv = poly->normalVector();
+				nv = poly->normal();
 			}
 			glBegin( GL_POLYGON );
 				for(int j=0; j<cv; j++) {
@@ -153,7 +153,7 @@ void ShadedMode::createDisplayList(const IScene *scene, const QColor *color)
 					}
 					
 					if (smoothShaded) {
-						nv = vert->normalVector();
+						nv = vert->normal();
 					}
 					glNormal3fv(nv);
 					glVertex3fv(data); 

@@ -202,17 +202,17 @@ CVertex* OffScene::readVertex(QStringList *tokens)
 		throw tr("Can't find all three vertex components!");
 	}
 	
-	double vertices[3];
+	float xyz[3];
 	bool ok;
 	
 	for(int i=0; i<3; i++) {
-		vertices[i] = tokens->at(i).toDouble(&ok);
+		xyz[i] = tokens->at(i).toDouble(&ok);
 		if (!ok) {
 			throw tr("Can't parse vertex data!");
 		}
 	}
 	
-	CVertex *vertex = new CVertex(vertices[0], vertices[1], vertices[2]);
+	CVertex *vertex = new CVertex(xyz);
 	
 	QColor color = readColor(tokens, 3);
 	if (color.isValid()) {
@@ -420,21 +420,25 @@ void OffScene::finalize()
 	// calculate normal vectors for all polygons
 	int pCount = polygons.size();
 	for(int i=0; i<pCount; i++) {
-		polygons[i]->calculateNormalVector();
+		polygons[i]->calculateNormal();
 	}
 
 	// calculate normal vectors for each vertex. the normal vector for a 
 	// vertex is the average of all connected polygon normal vectors
 	int vCount = vertices.size();
 	for(int i=0; i<vCount; i++) {
-		float x = 0, y = 0, z = 0;
+		float normal[3] = {0.0f, 0.0f, 0.0f};
 		int count = hintlist[i].size();
 		for(int j=0; j<count; j++) {
-			const float *nv = hintlist[i].at(j)->normalVector();
-			x += nv[0]; y += nv[1]; z += nv[2];
+			const float *nv = hintlist[i].at(j)->normal();
+			normal[0] += nv[0];
+			normal[1] += nv[1];
+			normal[2] += nv[2];
 		}
-		x /= count; y /= count; z /= count;
-		vertices[i]->setNormalVector(x, y, z);
+		normal[0] /= count;
+		normal[1] /= count;
+		normal[2] /= count;
+		vertices[i]->setNormal(normal);
 	}
 }
 
