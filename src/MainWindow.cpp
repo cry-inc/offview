@@ -511,7 +511,7 @@ void MainWindow::setObjectColor()
  */
 void MainWindow::resetView()
 {
-	glWidget->resetView();
+	glWidget->reset();
 	syncMenu();
 }
 

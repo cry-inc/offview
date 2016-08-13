@@ -1,11 +1,3 @@
-/**
- * @file GlWidget.cpp
- * @see GlWidget
- * @author D. Fritz
- * @author M. Caputo
- * @date 2010-02-25
- */
-
 #include "GlWidget.h"
 #include "WireframeMode.h"
 #include "DotMode.h"
@@ -13,20 +5,12 @@
 #include "SmoothShadedMode.h"
 #include "ColoredMode.h"
 
-/**
- * @brief Constructor of class GlWidget.
- *
- * The class inherits QGlWidget (public).
- * Creates an object of class GlWidget.
- *
- * @param[in] parent Parent widget (default = 0).
- */
 GlWidget::GlWidget(QWidget *parent): QGLWidget(parent)
 {
 	// Enable SuperSampling for all view modes
 	QGLWidget::setFormat(QGLFormat(QGL::SampleBuffers));
 
-	scene = 0;
+	scene = nullptr;
 	activeMode = 0;
 
 	renderModes.append(new WireframeMode());
@@ -42,14 +26,9 @@ GlWidget::GlWidget(QWidget *parent): QGLWidget(parent)
 	// Enables keyboard events for this widget
 	setFocusPolicy(Qt::ClickFocus);
 	
-	resetView();
+	reset();
 }
 
-/**
- * @brief Destructor of class GlWidget
- *
- * Destroys an object of the class GlWidget.
- */
 GlWidget::~GlWidget()
 {
 	for(int i=0; i<renderModes.size(); i++) {
@@ -57,22 +36,11 @@ GlWidget::~GlWidget()
 	}
 }
 
-/**
- * @brief	Initializes the active render mode.
- */
 void GlWidget::initializeGL()
 {
 	renderModes[activeMode]->setSettings();
 }
 
-/**
- * @brief Resizes the GlWidget
- *
- * The function readjustes the size of the GlWidget whenever needed.
- *
- * @param	w = Integer-Value of new width
- * @param	h = Integer-Value of new heigth
- */
 void GlWidget::resizeGL(int w, int h)
 {
 	// Fixed width and variable height:
@@ -95,11 +63,6 @@ void GlWidget::resizeGL(int w, int h)
 	glMatrixMode(GL_MODELVIEW);
 }
 
-/**
- *	@brief	Draws the GlWidget
- *
- * Central function that draws the 3D-Object, axes and planes.
- */
 void GlWidget::paintGL()
 {
 	glClearColor(
@@ -126,13 +89,13 @@ void GlWidget::paintGL()
 	float stepSize = 0.2f;
 	
 	if (showPlanes[0]) {
-		drawXzPlane(lines, stepSize, gridColor);
+		drawXzPlane(lines, stepSize, planeColor);
 	}
 	if (showPlanes[1]) {
-		drawXyPlane(lines, stepSize, gridColor);
+		drawXyPlane(lines, stepSize, planeColor);
 	}
 	if (showPlanes[2]) {
-		drawYzPlane(lines, stepSize, gridColor);
+		drawYzPlane(lines, stepSize, planeColor);
 	}
 	
 	if (scene) {
@@ -151,27 +114,11 @@ void GlWidget::paintGL()
 	}
 }
 
-/**
- *	@brief	Processes mouse clicks.
- *
- * Updates lastPos to the current position.
- *
- * @param	event Event that occured
- */
 void GlWidget::mousePressEvent(QMouseEvent *event)
 {
 	lastPos = event->pos();
 }
 
-/**
- *	@brief	Processes mouse movements.
- *
- * Depending on which mouse and/or keyboard
- *	buttons are pressed, the variables, paintGL uses to manipulate the
- * object, are changed.
- *
- * @param	event Event that occured
- */
 void GlWidget::mouseMoveEvent(QMouseEvent *event)
 {
 	int dx = event->x() - lastPos.x();
@@ -194,13 +141,6 @@ void GlWidget::mouseMoveEvent(QMouseEvent *event)
 	updateGL();
 }
 
-/**
- *	@brief	Processes turns of the mouse wheel
- *
- * Whenever we scroll with the mouse wheel, we zoom in/out.
- *
- * @param	event Event that occured
- */
 void GlWidget::wheelEvent(QWheelEvent *event)
 {	
 	if (event->delta() > 0 && scale < 20) {
@@ -213,9 +153,6 @@ void GlWidget::wheelEvent(QWheelEvent *event)
 	updateGL();
 }
 
-/**
- * @brief	Draws the coordinate axes of the object
- */
 void GlWidget::drawAxes()
 {
 	glLineWidth(3.0);
@@ -235,17 +172,10 @@ void GlWidget::drawAxes()
 	glLineWidth(1.0);
 }
 
-/**
- * @brief	Draws the x-z-plane
- *
- * @param	lines		number that decides how many lines the plane consists of.
- * @param	stepSize	Distance between two lines
- * @param	c			color of the plane
- */
 void GlWidget::drawXzPlane(int lines, float stepSize, const QColor & c)
 {
 	glColor3f(c.redF(), c.greenF(), c.blueF());
-	glBegin( GL_LINES );
+	glBegin(GL_LINES);
 	for(int i = -lines; i <= lines; i++) {
 		glVertex3f(stepSize*i, 0, -lines*stepSize);
 		glVertex3f(stepSize*i, 0, lines*stepSize);
@@ -257,17 +187,10 @@ void GlWidget::drawXzPlane(int lines, float stepSize, const QColor & c)
 	glEnd();
 }
 
-/**
- * @brief	Draws the x-y-plane
- *
- * @param	lines		number that decides how many lines the plane consists of.
- * @param	stepSize	Distance between two lines
- * @param	c			color of the plane
- */
 void GlWidget::drawXyPlane(int lines, float stepSize, const QColor & c)
 {
 	glColor3f(c.redF(), c.greenF(), c.blueF());
-	glBegin( GL_LINES );
+	glBegin(GL_LINES);
 	for(int i=-lines; i<=lines; i++) {
 		glVertex3f(stepSize*i, -lines*stepSize, 0);
 		glVertex3f(stepSize*i, lines*stepSize, 0);
@@ -279,17 +202,10 @@ void GlWidget::drawXyPlane(int lines, float stepSize, const QColor & c)
 	glEnd();
 }
 
-/**
- * @brief	Draws the y-z-plane
- *
- * @param	lines		number that decides how many lines the plane consists of.
- * @param	stepSize	Distance between two lines
- * @param	c			color of the plane
- */
 void GlWidget::drawYzPlane(int lines, float stepSize, const QColor & c)
 {
 	glColor3f(c.redF(), c.greenF(), c.blueF());
-	glBegin( GL_LINES );
+	glBegin(GL_LINES);
 	for(int i=-lines; i<=lines; i++) {
 		glVertex3f(0, stepSize*i, -lines*stepSize);
 		glVertex3f(0, stepSize*i, lines*stepSize);
@@ -301,26 +217,17 @@ void GlWidget::drawYzPlane(int lines, float stepSize, const QColor & c)
 	glEnd();
 }
 
-/**
- * @brief	The new value for the class attribute 'scene' is 'scene'.
- */
 void GlWidget::setScene(IScene *scene)
 {
 	this->scene = scene;
 	calculateOffsetAndScale();
-	resetView();
+	reset();
 	updateGL();
 }
 
-/**
- * @brief	Calculate the model offset and scale values
- *
- * The values calculated here are used by paintGL() to center our model
- * and scale it so it fits the window.
- */
 void GlWidget::calculateOffsetAndScale()
 {
-	if (!scene || scene->verticesCount() < 1) {
+	if (!scene || scene->verticesCount() == 0) {
 		return;
 	}
 
@@ -354,130 +261,73 @@ void GlWidget::calculateOffsetAndScale()
 	modelOffset[2] = -(maxZ-widthZ/2.0);
 }
 
-/**
- * @brief	The new value for the class attribute 'bgcolor' is 'c'.
- */
-void GlWidget::setBackgroundColor(const QColor & c)
+void GlWidget::setBackgroundColor(const QColor& c)
 {
 	bgColor = c;
 	updateGL();
 }
 
-/**
- * @brief	Get the background color.
- *
- * @return	Value of class attribute 'bgcolor'
- */
-QColor GlWidget::backgroundColor()
+const QColor& GlWidget::backgroundColor()
 {
 	return bgColor;
 }
 
-/**
- * @brief	The new value for the class attribute 'color' is 'c'.
- */
-void GlWidget::setObjectColor(const QColor & c)
+void GlWidget::setObjectColor(const QColor& c)
 {
 	color = c;
 	updateGL();
 }
 
-/**
- * @brief	Get the color of the object.
- *
- * @return	Value of class attribute 'color'
- */
-QColor GlWidget::objectColor()
+const QColor& GlWidget::objectColor()
 {
 	return color;
 }
 
-/**
- * @brief	The new value for the class attribute
- *				'showPlanes' at Index 0 is 'status'.
- */
 void GlWidget::setXzPlane(bool status)
 {
 	showPlanes[0] = status;
 	updateGL();
 }
 
-/**
- * @brief	Check whether the x-z-plane is to be drawn or not.
- *
- * @return	Value of class attribute 'showPlanes' at Index 0
- */
 bool GlWidget::xzPlane()
 {
 	return showPlanes[0];
 }
 
-/**
- * @brief	The new value for the class attribute
- *				'showPlanes' at Index 1 is 'status'.
- */
 void GlWidget::setXyPlane(bool status)
 {
 	showPlanes[1] = status;
 	updateGL();
 }
 
-/**
- * @brief	Check whether the x-y-plane is to be drawn or not.
- *
- * @return	Value of class attribute 'showPlanes' at Index 1
- */
 bool GlWidget::xyPlane()
 {
 	return showPlanes[1];
 }
 
-/**
- * @brief	The new value for the class attribute
- *				'showPlanes' at Index 2 is 'status'.
- */
 void GlWidget::setYzPlane(bool status)
 {
 	showPlanes[2] = status;
 	updateGL();
 }
 
-/**
- * @brief	Check whether the y-z-plane is to be drawn or not.
- *
- * @return	Value of class attribute 'showPlanes' at Index 2
- */
 bool GlWidget::yzPlane()
 {
 	return showPlanes[2];
 }
 
-/**
- * @brief	The new value for the class attribute 'showAxes' is 'status'.
- */
 void GlWidget::setAxes(bool status)
 {
 	showAxes = status;
 	updateGL();
 }
 
-/**
- * @brief	Check whether the coordinate axes of the object are to be drawn or not.
- *
- * @return	Value of class attribute 'showAxes'
- */
 bool GlWidget::axes()
 {
 	return showAxes;
 }
 
-/**
- * @brief Resets the view
- *
- * Whenever we want to reset the view,
- * all attributes must be reset to their initial values.
- */
-void GlWidget::resetView()
+void GlWidget::reset()
 {
 	showAxes = true;
 
@@ -488,22 +338,20 @@ void GlWidget::resetView()
 	// Reset the colors
 	color = QColor(160, 160, 160);
 	bgColor = QColor("black");
-	gridColor = QColor(100, 100, 100);
+	planeColor = QColor(100, 100, 100);
 
 	// Reset scale, rotation and translation values
-	scale = 1.0;
-	xRot = 0.0; yRot = 0.0;
-	xTrans = 0.0; yTrans = 0.0;
+	scale = 1.0f;
+
+	xRot = 0.0f;
+	yRot = 0.0f;
+
+	xTrans = 0.0f;
+	yTrans = 0.0f;
 	
 	updateGL();
 }
 
-/**
- * @brief	Lists the names of all render modes.
- *
- * @see		IRenderMode
- * @return	A QStringList, containing all these names.
- */
 QStringList GlWidget::listRenderModes()
 {
 	QStringList list;
@@ -513,46 +361,21 @@ QStringList GlWidget::listRenderModes()
 	return list;
 }
 
-/**
- * @brief	Provides the active render mode
- *
- * @return	Value of class attribute 'activeMode'
- */
 int GlWidget::renderMode()
 {
 	return activeMode;
 }
 
-/**
- * @brief	Provides the best render mode for colored scenes
- *
- * @return	Index number of the render mode
- */
 int GlWidget::modeForColoredScenes()
 {
 	return coloredMode;
 }
 
-/**
- * @brief	Provides the best render mode for uncolored scenes
- *
- * @return	Index number of the render mode
- */
 int GlWidget::modeForUncoloredScenes()
 {
 	return uncoloredMode;
 }
 
-/**
- * @brief	Sets a new render mode.
- *
- * The new value for the class attribute 'activeMode' is 'm'.
- * Functions to activate the new render mode and to deactivate
- * the old one are called.
- *
- * @see		IRenderMode
- * @return	no return value(void)
- */
 void GlWidget::setRenderMode(int m)
 {
 	renderModes[activeMode]->unsetSettings();
@@ -561,12 +384,6 @@ void GlWidget::setRenderMode(int m)
 	updateGL();
 }
 
-/**
- * @brief	Provides the name of the active render mode
- *
- * @see		IRenderMode
- * @return	Name of class attribute 'activeMode'
- */
 QString GlWidget::renderModeName()
 {
 	return renderModes[activeMode]->name();
