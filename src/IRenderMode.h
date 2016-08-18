@@ -1,5 +1,10 @@
+#pragma once
+
+#include <QString>
+
+#include "IScene.h"
+
 /**
- * @class IRenderMode
  * @brief The abstract interface for all render modes
  *
  * Provides an abstract interface for custom OpenGL rendering modes.
@@ -7,17 +12,8 @@
  * @author M. Caputo
  * @date 2010-03-26
  */
-
-#ifndef I_RENDER_MODE_H
-#define I_RENDER_MODE_H
-
-#include <QString>
-
-#include "IScene.h"
-
 class IRenderMode
 {
-
 public:
 	virtual ~IRenderMode() {}
 
@@ -57,5 +53,3 @@ public:
 	 */
 	virtual void draw(const IScene *scene, const QColor *defaultColor) = 0;
 };
-
-#endif

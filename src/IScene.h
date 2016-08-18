@@ -1,5 +1,10 @@
+#pragma once
+
+#include <QColor>
+
+#include "CPolygon.h"
+
 /**
- * @class IScene
  * @brief The abstract scene interface
  *
  * Provides an abstract interface for models/scenes. Each scene consists of
@@ -11,17 +16,8 @@
  * @author M. Caputo
  * @date 2010-03-17
  */
-
-#ifndef I_SCENE_H
-#define I_SCENE_H
-
-#include <QColor>
-
-#include "CPolygon.h"
-
 class IScene
 {
-
 public:
 	virtual ~IScene() {}
 
@@ -72,5 +68,3 @@ public:
 	virtual const CVertex* vertex(int i) const = 0;
 	
 };
-
-#endif
