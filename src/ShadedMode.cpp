@@ -1,26 +1,6 @@
-/**
- * @file ShadedMode.cpp
- * @see ShadedMode
- * @see IRenderMode
- * @author M. Caputo
- * @date 2010-06-11
- */
-
 #include <QtOpenGL>
 #include "ShadedMode.h"
 
-/**
- * @brief Constructor
- *
- * Constructor which can create eight different render modes:
- * Uncolored flat shading, uncolored smooth shading, colored flat shading,
- * colored smooth shading and all of these modes with or without specular
- * highlights.
- *
- * @param [in] smoothShaded Enables smooth shading. False means flat shading.
- * @param [in] colored Enables colored mode. False means uncolored mode.
- * @param [in] specular Enables specular highlights. False means no specular effects.
- */
 ShadedMode::ShadedMode(bool smoothShaded, bool colored, bool specular)
 {
 	this->smoothShaded = smoothShaded;
@@ -50,17 +30,6 @@ void ShadedMode::unsetSettings()
 	glDisable(GL_NORMALIZE);
 }
 
-/**
- * @brief Draws a flat or smooth shaded IScene object
- *
- * This is an implenentation of IRenderMode::draw() with an additional
- * parameter to control the shading. To use it, you can
- * inherit a new render mode from this class and delegate draw() to
- * this method!
- *
- * @param [in] scene The scene which should be drawn
- * @param [in] defaultColor The default scene color
- */
 void ShadedMode::draw(const IScene *scene, const QColor *color)
 {	
 	// If the scene or the color has changed, we need to create an new display list
@@ -96,19 +65,6 @@ void ShadedMode::draw(const IScene *scene, const QColor *color)
 	glDisable(GL_LIGHTING);
 }
 
-/**
- * @brief Creates a display list for the object 
- *
- * To get more perfomance out of OpenGL we use the display list
- * feature. This can create a precompiled list of OpenGL commands
- * which can be drawn much faster than with the normal immediate mode.
- * The refenece number for the display list will be stored in the
- * object variable displayList.
- *
- * @see ShadedMode::displayList
- * @param [in] scene The scene which should be drawn
- * @param [in] color Default model color
- */
 void ShadedMode::createDisplayList(const IScene *scene, const QColor *color)
 {
 	displayList = glGenLists(1);

@@ -1,5 +1,8 @@
+#pragma once
+
+#include "ShadedMode.h"
+
 /**
- * @class SmoothShadedMode
  * @brief Smooth shaded render mode
  *
  * This mode displays the object as a solid and smooth shaded object.
@@ -11,21 +14,18 @@
  * @author M. Caputo
  * @date 2010-06-11
  */
-
-#ifndef SMOOTHSHADED_MODE_H
-#define SMOOTHSHADED_MODE_H
-
-#include "ShadedMode.h"
-
 class SmoothShadedMode : public ShadedMode
 {
 	Q_DECLARE_TR_FUNCTIONS(SmoothShadedMode)
 
 public:
-
+	/**
+	 * @brief Constructor
+	 *
+	 * Does nothing but call the base contructor of ShadedMode with the
+	 * right settings. All the work will be done by the base class!
+	 */
 	SmoothShadedMode();
+
 	QString name() const override;
-
 };
-
-#endif

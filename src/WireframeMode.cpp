@@ -1,11 +1,3 @@
-/**
- * @file WireframeMode.cpp
- * @see WireframeMode
- * @see IRenderMode
- * @author M. Caputo
- * @date 2010-03-26
- */
-
 #include <QtOpenGL>
 #include "WireframeMode.h"
 

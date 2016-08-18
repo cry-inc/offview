@@ -1,5 +1,8 @@
+#pragma once
+
+#include "IRenderMode.h"
+
 /**
- * @class ShadedMode
  * @brief Base class for shaded render modes
  *
  * This abstract class provides methods for smooth and flat shaded objects.
@@ -12,24 +15,52 @@
  * @author M. Caputo
  * @date 2010-06-11
  */
-
-#ifndef SHADED_MODE_H
-#define SHADED_MODE_H
-
-#include "IRenderMode.h"
-
 class ShadedMode : public IRenderMode
 {
-
 public:
-
+	/**
+	 * @brief Constructor
+	 *
+	 * Constructor which can create eight different render modes:
+	 * Uncolored flat shading, uncolored smooth shading, colored flat shading,
+	 * colored smooth shading and all of these modes with or without specular
+	 * highlights.
+	 *
+	 * @param [in] smoothShaded Enables smooth shading. False means flat shading.
+	 * @param [in] colored Enables colored mode. False means uncolored mode.
+	 * @param [in] specular Enables specular highlights. False means no specular effects.
+	 */
 	ShadedMode(bool smoothShaded, bool colored, bool specular);
 	void setSettings() override;
 	void unsetSettings() override;
+
+	/**
+	 * @brief Draws a flat or smooth shaded IScene object
+	 *
+	 * This is an implenentation of IRenderMode::draw() with an additional
+	 * parameter to control the shading. To use it, you can
+	 * inherit a new render mode from this class and delegate draw() to
+	 * this method!
+	 *
+	 * @param [in] scene The scene which should be drawn
+	 * @param [in] defaultColor The default scene color
+	 */
 	void draw(const IScene *scene, const QColor *color) override;
 	
 private:
-
+	/**
+	 * @brief Creates a display list for the object 
+	 *
+	 * To get more perfomance out of OpenGL we use the display list
+	 * feature. This can create a precompiled list of OpenGL commands
+	 * which can be drawn much faster than with the normal immediate mode.
+	 * The refenece number for the display list will be stored in the
+	 * object variable displayList.
+	 *
+	 * @see ShadedMode::displayList
+	 * @param [in] scene The scene which should be drawn
+	 * @param [in] color Default model color
+	 */
 	void createDisplayList(const IScene *scene, const QColor *color);
 
 	/**
@@ -61,7 +92,4 @@ private:
 	 * @brief Specular light effects enabled?
 	 */
 	bool specular;
-
 };
-
-#endif
