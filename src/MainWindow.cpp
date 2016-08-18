@@ -1,27 +1,10 @@
-/**
- * @file MainWindow.cpp
- * @see MainWindow
- *
- * @author Markus Haecker
- * @date 2010-05-25
- */
-
 #include <QFileInfo>
 
 #include "MainWindow.h"
 #include "SceneFactory.h"
 
-/**
- * @brief Constructor of class MainWindow.
- *
- * The class is derived from the base class QMainWindow (public).
- * The layout has been created with Qt Designer and is loaded from file MainWindow.ui.
- *
- * @param[in] fileToOpen String with a file to load, may be empty (default = "").
- * @param[in] parent Parent widget (default = 0).
- */
 MainWindow::MainWindow(QString fileToOpen, QWidget* parent)
-    : QMainWindow(parent)
+	: QMainWindow(parent)
 {
 	scene = 0;
 	renderModesAlignmentGroup = 0;
@@ -52,9 +35,6 @@ MainWindow::MainWindow(QString fileToOpen, QWidget* parent)
 	}
 }
 
-/**
- * @brief Destructor of class MainWindow.
- */
 MainWindow::~MainWindow()
 {
 	if (renderModesAlignmentGroup) {
@@ -74,11 +54,6 @@ MainWindow::~MainWindow()
 	}
 }
 
-/**
- * @brief Processes a drag enter event.
- *
- * @param[in,out] event Drag enter event.
- */
 void MainWindow::dragEnterEvent(QDragEnterEvent* event)
 {
 	QString filePath;
@@ -87,11 +62,6 @@ void MainWindow::dragEnterEvent(QDragEnterEvent* event)
 	}
 }
 
-/**
- * @brief Processes a drop event.
- *
- * @param[in,out] event Drop event.
- */
 void MainWindow::dropEvent(QDropEvent* event)
 {
 	QString filePath;
@@ -101,11 +71,6 @@ void MainWindow::dropEvent(QDropEvent* event)
 	}
 }
 
-/**
- * @brief Open, parse and show an OFF-File.
- *
- * @param[in] fileToOpen Path and name of the OFF-File.
- */
 void MainWindow::parseFileAndShowObject(const QString & fileToOpen)
 {
 	try {
@@ -141,19 +106,6 @@ void MainWindow::parseFileAndShowObject(const QString & fileToOpen)
 	}
 }
 
-/**
- * @brief Set the main window title.
- *
- * The window title consists of the program name followed by an optional filename,
- * that can be passed as parameter.
- *
- * @warning DO NOT set the window title with Qt Designer! Otherwise every time
- * ui.retranslateUi() is called, the window title would be set to the title
- * assigned with Qt Designer.
- *
- * @param[in] filename Optional filename as QString.
- *
- */
 void MainWindow::setMainWindowTitle(const QString & filename)
 {
 	if (filename.isEmpty()) {
@@ -163,44 +115,26 @@ void MainWindow::setMainWindowTitle(const QString & filename)
 	}
 }
 
-/**
- * @brief Connect menu items to methods.
- *
- * This function assigns menu items (generated from MainWindow.ui) to
- * methods (slots).
- * Menu items for choosing a render mode and for switching the language are
- * generated and connected dynamically by createRenderModesMenu() and
- * createLanguageMenu() (both called from constructor).
- */
 void MainWindow::connectSignalsAndSlots()
 {
-    connect(ui.actionOpen_File,	SIGNAL(triggered()), this, SLOT(open()));
-    connect(ui.actionClose_File, SIGNAL(triggered()), this, SLOT(close()));
-    connect(ui.actionExit, SIGNAL(triggered()), this, SLOT(exit()));
-    connect(ui.actionXz_Plane, SIGNAL(triggered()), this, SLOT(toggleXzPlane()));
-    connect(ui.actionXy_Plane, SIGNAL(triggered()), this, SLOT(toggleXyPlane()));
-    connect(ui.actionYz_Plane, SIGNAL(triggered()), this, SLOT(toggleYzPlane()));
-    connect(ui.actionChoose_Background_Color, SIGNAL(triggered()), this,
+	connect(ui.actionOpen_File,	SIGNAL(triggered()), this, SLOT(open()));
+	connect(ui.actionClose_File, SIGNAL(triggered()), this, SLOT(close()));
+	connect(ui.actionExit, SIGNAL(triggered()), this, SLOT(exit()));
+	connect(ui.actionXz_Plane, SIGNAL(triggered()), this, SLOT(toggleXzPlane()));
+	connect(ui.actionXy_Plane, SIGNAL(triggered()), this, SLOT(toggleXyPlane()));
+	connect(ui.actionYz_Plane, SIGNAL(triggered()), this, SLOT(toggleYzPlane()));
+	connect(ui.actionChoose_Background_Color, SIGNAL(triggered()), this,
 			SLOT(setBackgroundColor()));
-    connect(ui.actionChoose_Object_Color, SIGNAL(triggered()), this,
+	connect(ui.actionChoose_Object_Color, SIGNAL(triggered()), this,
 			SLOT(setObjectColor()));
-    connect(ui.actionShow_Coordinate_System, SIGNAL(triggered()), this,
+	connect(ui.actionShow_Coordinate_System, SIGNAL(triggered()), this,
 			SLOT(toggleAxes()));
-    connect(ui.actionReset_View, SIGNAL(triggered()), this, SLOT(resetView()));
-    connect(ui.actionHelp_Content, SIGNAL(triggered()), this, SLOT(help()));
-    connect(ui.actionAbout_OffView, SIGNAL(triggered()), this, SLOT(about()));
-    connect(ui.actionAbout_Qt, SIGNAL(triggered()), this, SLOT(aboutQt()));
+	connect(ui.actionReset_View, SIGNAL(triggered()), this, SLOT(resetView()));
+	connect(ui.actionHelp_Content, SIGNAL(triggered()), this, SLOT(help()));
+	connect(ui.actionAbout_OffView, SIGNAL(triggered()), this, SLOT(about()));
+	connect(ui.actionAbout_Qt, SIGNAL(triggered()), this, SLOT(aboutQt()));
 }
 
-/**
- * @brief Display all available render modes in menu "View" -> "Mode".
- *
- * The render modes are provided in a QStringList by listRenderModes().
- * Render modes are shown in an alignment group, each one with a radio button,
- * so that only one mode can be marked as active.
- * Render mode items are connected with setRenderMode(), which is competent
- * to initiate the mode change.
- */
 void MainWindow::createRenderModesMenu()
 {
 	QStringList nameOfRenderModes = glWidget->listRenderModes();
@@ -222,20 +156,6 @@ void MainWindow::createRenderModesMenu()
 	actionRenderMode[renderMode]->setChecked(true); // Mark radio button of active mode
 }
 
-/**
- * @brief Display all available languages in menu "Language".
- *
- * The menu is build dynamically and depends on the .qm translation files that
- * can be found in :/lang.
- *
- * For every translation file there is one menu item, where the item's text is
- * the translation of the string "LanguageMenuItem". Examples: Translation should
- * be "English" in an English translation and "Deutsch" in a German translation.
- *
- * With the translation of "LanguageMenuIcon" there is also the posibility to specify
- * an icon (has to be in resource folder :/img/menu/).
- *
- */
 void MainWindow::createLanguageMenu()
 {
 	QString qmPath(":/lang");
@@ -285,12 +205,6 @@ void MainWindow::createLanguageMenu()
 	connect(signalMapper, SIGNAL(mapped(int)), this, SLOT(setLanguage(int)));
 }
 
-/**
- * @brief Translate the render modes in menu "View" -> "Mode".
- *
- * This function is called every time a user changes the application's
- * language using the language menu.
- */
 void MainWindow::updateRenderModesMenu()
 {
 	if (!renderModesAlignmentGroup) {
@@ -307,19 +221,6 @@ void MainWindow::updateRenderModesMenu()
 	}
 }
 
-/**
- * @brief Loads a language file.
- *
- * When an item from the language menu is selected, the signal
- * triggered(int actionLanguageIndex) is emitted, which is connected to
- * this slot. The signal gives us the parameter actionLanguageIndex, so we
- * know which language the user has chosen. It than can be accessed
- * with the QVector actionLanguage.
- *
- * setLanguage() is also called by loadNativeLanguageFile() on program's startup.
- *
- * @param[in] actionLanguageIndex Index of language in QVector actionLanguage.
- */
 void MainWindow::setLanguage(int actionLanguageIndex)
 {
 	if ((actionLanguageIndex >= actionLanguage.size()) ||
@@ -352,26 +253,12 @@ void MainWindow::setLanguage(int actionLanguageIndex)
 	retranslateUi();
 }
 
-/**
- * @brief Retranslate the user interface.
- *
- * This method is called every time a user changes the application's
- * language using the Language menu.
- */
 void MainWindow::retranslateUi()
 {
 	updateRenderModesMenu(); // Translates the render modes in menu "View" -> "Mode"
 	ui.retranslateUi(this); // Translates all the rest
 }
 
-/**
- * @brief Check drag and drop MIME data for a valid file path.
- *
- * @param[in] mimeData MIME data of the drag and drop event.
- * @param[out] filePath Optional file path output, if the MIME data contained a valid one.
- *
- * @return	True, if the MIME data contained a valid file path, false otherwise.
- */
 bool MainWindow::checkDragAndDropData(const QMimeData* mimeData, QString* filePath) const
 {
 	if (!mimeData->hasUrls()) {
@@ -394,15 +281,6 @@ bool MainWindow::checkDragAndDropData(const QMimeData* mimeData, QString* filePa
 	return true;
 }
 
-/**
- * @brief Set a language suitable to the system's settings.
- *
- * This method is called from the MainWindow constructor and has to
- * be executed AFTER createLanguageMenu()!
- *
- * Note: A language file must have the format something_XX.qm, where XX is a
- * lowercase, two-letter ISO 639 language code.
- */
 void MainWindow::loadNativeLanguageFile()
 {
 	QString locale = QLocale::system().name(); // e.g. de_DE
@@ -428,33 +306,19 @@ void MainWindow::loadNativeLanguageFile()
 	}
 }
 
-/**
- * @brief Shows an "Open File" dialog.
- *
- * The dialog shows the directory of an previous loaded file. If there is
- * none, the application's current directory is shown.
- *
- * In the dialog, users can select an .off file. After clicking "open" it is attempted to open
- * and parse the file and show the 3D model in the window.
- *
- * @see parseFileAndShowObject()
- */
 void MainWindow::open()
 {
 	QString file = QFileDialog::getOpenFileName(
-		         this, tr("Open File"),
-		         openedFile.absoluteFilePath(), SceneFactory::openFileString());
+		this, tr("Open File"),
+		openedFile.absoluteFilePath(),
+		SceneFactory::openFileString()
+	);
 
 	if(!file.isNull()) {
 		parseFileAndShowObject(file);
 	}
 }
 
-/**
- * @brief Close a previous loaded .off file.
- *
- * Clear the central widget, unload any 3D model shown in it.
- */
 void MainWindow::close()
 {
 	glWidget->setScene(0);
@@ -466,20 +330,11 @@ void MainWindow::close()
 	setMainWindowTitle(); // Remove filename from window title
 }
 
-/**
- * @brief Tells the application to exit.
- */
 void MainWindow::exit()
 {
 	QApplication::exit();
 }
 
-/**
- * @brief Set the background color.
- *
- * Pop up a color dialog and let the user choose a color. The background will be
- * filled with the chosen color.
- */
 void MainWindow::setBackgroundColor()
 {
 	QColor color = glWidget->backgroundColor();
@@ -489,12 +344,6 @@ void MainWindow::setBackgroundColor()
 	}
 }
 
-/**
- * @brief Set the object color.
- *
- * Pop up a color dialog and let the user choose a color. The chosen color
- * is used for the object.
- */
 void MainWindow::setObjectColor()
 {
 	QColor color = glWidget->objectColor();
@@ -504,20 +353,12 @@ void MainWindow::setObjectColor()
 	}
 }
 
-/**
- * @brief Reset the view.
- *
- * All settings a user has made are cleared and are set to default.
- */
 void MainWindow::resetView()
 {
 	glWidget->reset();
 	syncMenu();
 }
 
-/**
- * @brief Toggle coordinate axes visible/hidden.
- */
 void MainWindow::toggleAxes()
 {
 	if (ui.actionShow_Coordinate_System->isChecked()) {
@@ -527,9 +368,6 @@ void MainWindow::toggleAxes()
 	}
 }
 
-/**
- * @brief Toggle xz Plane visible/hidden.
- */
 void MainWindow::toggleXzPlane()
 {
 	if (ui.actionXz_Plane->isChecked()) {
@@ -539,9 +377,6 @@ void MainWindow::toggleXzPlane()
 	}
 }
 
-/**
- * @brief Toggle xy Plane visible/hidden.
- */
 void MainWindow::toggleXyPlane()
 {
 	if (ui.actionXy_Plane->isChecked()) {
@@ -551,9 +386,6 @@ void MainWindow::toggleXyPlane()
 	}
 }
 
-/**
- * @brief Toggle yz Plane visible/hidden.
- */
 void MainWindow::toggleYzPlane()
 {
 	if (ui.actionYz_Plane->isChecked()) {
@@ -563,16 +395,6 @@ void MainWindow::toggleYzPlane()
 	}
 }
 
-/**
- * @brief Synchronize the menu's check buttons.
- *
- * Set or unset the check buttons in menus "Show Planes" and "Show Coordinate
- * System", depending on the values returned by the GLWidget methods.
- *
- * Values are set initial in GlWidget::resetView().
- *
- * @see resetView()
- */
 void MainWindow::syncMenu()
 {
 	ui.actionShow_Coordinate_System->setChecked(glWidget->axes());
@@ -581,14 +403,6 @@ void MainWindow::syncMenu()
 	ui.actionYz_Plane->setChecked(glWidget->yzPlane());
 }
 
-/**
- * @brief Open a HTML helpfile with a suitable application.
- *
- * Which helpfile will be loaded depends on the loaded language and the
- * translation of "help_en.html" in the correspondending language file.
- * The helpfile has to be located in the folder "doc" in the applications
- * directory path.
- */
 void MainWindow::help()
 {
 	QString path = QString("file:///") + 
@@ -597,15 +411,6 @@ void MainWindow::help()
 	QDesktopServices::openUrl(QUrl(path));
 }
 
-/**
- * @brief Set new render mode.
- *
- * In the menu bar there is a dynamically generated menu for changing the
- * render mode. Available render modes are shown as radio buttons. If the user
- * select one, this function checks which it was and update the window.
- *
- * @see GlWidget::setRenderMode()
- */
 void MainWindow::setRenderMode()
 {
 	for (int i = 0; i < actionRenderMode.size(); ++i) {
@@ -617,14 +422,6 @@ void MainWindow::setRenderMode()
 	statusBar()->showMessage(glWidget->renderModeName() + tr(" activated"));
 }
 
-/**
- * @brief Display a simple message box about our cool viewer...
- *
- * The message box includes the version number of OffView, provided by the macro
- * OFFVIEW_VERSION in Version.h.
- *
- * @see Version.h
- */
 void MainWindow::about()
 {
 	QString body = tr("<h3>About OffView version %1</h3>"
@@ -649,11 +446,6 @@ void MainWindow::about()
 	QMessageBox::about(this, tr("About OffView"), body);
 }
 
-/**
- * @brief Display a simple message box about Qt.
- *
- * The message box includes the version number of Qt being used by the application.
- */
 void MainWindow::aboutQt()
 {
 	QApplication::aboutQt();
