@@ -1,1 +1,9 @@
-/offview.pro.user
+*.user
+*.sln
+*.VC.*
+*.vcxproj*
+/.vs
+/debug
+/release
+/x64
+/GeneratedFiles
