@@ -10,8 +10,8 @@
 * This is the source code documentation for our project OffView generated 
 * with Doxygen.
 *
-* You can find the OffView project page at Google Code:
-* <a href="http://code.google.com/p/offview">http://code.google.com/p/offview</a>.
+* You can find the OffView project at GitHub:
+* <a href="https://github.com/cry-inc/offview">https://github.com/cry-inc/offview</a>.
 */
 
 #include <QtCore>

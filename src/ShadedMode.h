@@ -31,7 +31,9 @@ public:
 	 * @param [in] specular Enables specular highlights. False means no specular effects.
 	 */
 	ShadedMode(bool smoothShaded, bool colored, bool specular);
+
 	void setSettings() override;
+	
 	void unsetSettings() override;
 
 	/**
@@ -45,7 +47,7 @@ public:
 	 * @param [in] scene The scene which should be drawn
 	 * @param [in] defaultColor The default scene color
 	 */
-	void draw(const IScene *scene, const QColor *color) override;
+	void draw(const IScene *scene, const QColor *defaultColor) override;
 	
 private:
 	/**

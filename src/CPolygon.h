@@ -31,7 +31,7 @@ public:
 	 * @param [in] vertex A vertex which should be added to the polygon
 	 * @see CVertex
 	 */
-	void addVertex(CVertex* v);
+	void addVertex(CVertex* vertex);
 
 	/**
 	 * @brief Returns the number of vertices

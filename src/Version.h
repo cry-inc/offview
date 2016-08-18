@@ -1,17 +1,10 @@
+#pragma once
+
 /**
- * @file Version.h
+ * @brief OffView version number.
  * 
- * This file contains the OffView version number. This makes 
- * it easier to increment the version number, because there is
- * only a single point which has to be changed.
- *
- * @author M. Caputo
- * @date 2010-05-08
+ * This contains the OffView version number. This makes 
+ * it easy to increment the version number, because there is
+ * only a single point which has to be changed for updates.
  */
-
-#ifndef VERSION_H
-#define VERSION_H
-
 #define OFFVIEW_VERSION "1.0"
-
-#endif
