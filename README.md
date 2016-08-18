@@ -85,17 +85,19 @@ Volunteers required :)
 ## Files
 
 	doc/           The code documentation and the end user help files
-	img/           Icons and other in OffView included images
+	examples/      Some very simple OFF files for testing
+	img/           Icons and other in OffView included images ans screen shots
 	lang/          The translation files
 	src/           The C++ source code
-	README.md      This file
+	.gitignore     Filter for stuff that should not be under version control
+	.travis.yml    CI configuration for https://travis-ci.org/ (Linux)
+	appveyor.yml   CI configuration for https://www.appveyor.com/ (Windows)
+	Doxyfile       Doxygen configuration file
 	LICENSE        A copy of the GPL version 3
 	offview.pro    The Qt project file
 	offview.qrc    Qt resource file to embed images and translations
 	offview.rc     Windows specific resource file for the Windows application icons
-	Doxyfile       Doxygen configuration file
-	.travis.yml    Configuration file for the Travis CI service
-	appveyor.yml   Configuration file for the Appveyor CI service
+	README.md      This file
 
 
 ## Contributors
@@ -106,7 +108,7 @@ Volunteers required :)
 * Benjamin Stauder
 
 
-## Thanks
+## Acknowledgments
 
 The menu icons are taken from the Silk icon set, located at
 http://www.famfamfam.com/lab/icons/silk. Many thanks to the author!
