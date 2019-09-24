@@ -86,7 +86,7 @@ Volunteers required :)
 
 	doc/           The code documentation and the end user help files
 	examples/      Some very simple OFF files for testing
-	img/           Icons and other in OffView included images ans screen shots
+	img/           Icons and other included images and screenshots
 	lang/          The translation files
 	src/           The C++ source code
 	.gitignore     Filter for stuff that should not be under version control
