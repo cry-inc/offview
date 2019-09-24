@@ -52,6 +52,3 @@ TRANSLATIONS += lang/offview_de.ts \
 RC_FILE = offview.rc
 
 RESOURCES = offview.qrc
-
-# This file is the Mac OS X icon
-ICON = img/offview.icns
