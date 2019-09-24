@@ -78,7 +78,7 @@ void ShadedMode::createDisplayList(const IScene *scene, const QColor *color)
 				nv = poly->normal();
 			}
 			glBegin( GL_POLYGON );
-				for(int j=0; j<cv; j++) {
+				for(size_t j=0; j<cv; j++) {
 					const CVertex *vert = poly->vertex(j);
 					const float *data = vert->vertex();
 

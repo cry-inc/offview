@@ -42,7 +42,7 @@ void WireframeMode::draw(const IScene *scene, const QColor *defaultColor)
 				const CPolygon *poly = scene->polygon(i);
 				size_t cv = poly->vertexCount();
 				glBegin( GL_LINE_LOOP );
-					for(int j=0; j<cv; j++) {
+					for(size_t j=0; j<cv; j++) {
 						const CVertex *vert = poly->vertex(j);
 						const float *data = vert->vertex();
 						glVertex3fv(data);

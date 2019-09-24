@@ -43,7 +43,7 @@ const QColor& CPolygon::color() const
 
 void CPolygon::calculateNormal()
 {
-	if (_vertices.size() < 3u) {
+	if (_vertices.size() < 3) {
 		return;
 	}
 	
