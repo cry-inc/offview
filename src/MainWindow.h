@@ -7,13 +7,10 @@
 #include "Version.h"
 
 /**
- * @brief Provides the main application window
+ * Provides the main application window.
  *
  * This class offers a menu bar, a status bar and in the center a widget
  * that presents the 3D object.
- *
- * @author Markus Haecker
- * @date 2010-05-26
  */
 class MainWindow : public QMainWindow
 {
