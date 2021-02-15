@@ -1,6 +1,3 @@
-[![Linux Build Status - Travis](https://travis-ci.org/cry-inc/offview.svg?branch=master)](https://travis-ci.org/cry-inc/offview)
-[![Windows Build Status - AppVeyor](https://ci.appveyor.com/api/projects/status/github/cry-inc/offview?branch=master&svg=true)](https://ci.appveyor.com/project/cry-inc/offview)
-
 # OffView
 
 OffView is a simple tool for viewing OFF files with OpenGL.
@@ -90,8 +87,6 @@ Volunteers required :)
 	lang/          The translation files
 	src/           The C++ source code
 	.gitignore     Filter for stuff that should not be under version control
-	.travis.yml    CI configuration for https://travis-ci.org/ (Linux)
-	appveyor.yml   CI configuration for https://www.appveyor.com/ (Windows)
 	Doxyfile       Doxygen configuration file
 	LICENSE        A copy of the GPL version 3
 	offview.pro    The Qt project file
